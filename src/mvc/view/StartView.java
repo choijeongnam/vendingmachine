@@ -1,5 +1,7 @@
 package mvc.view;
 
+import mvc.model.controller.GoodsController;
+
 public class StartView {
 
 	public static void main(String[] args) {
@@ -48,6 +50,8 @@ public class StartView {
 		 * 
 		 * 
 		 * */
+		
+		//GoodsController.selectStock("A01");
 	}
 
 }

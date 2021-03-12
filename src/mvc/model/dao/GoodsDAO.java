@@ -39,9 +39,9 @@ public interface GoodsDAO {
 	 * 굿즈테이블에서 재고 전체 조회니까 이거는 조인안하셔되빈다
 	 * select  자판기번호, name, stock  
 	 * from goods where 자판기번호 = ?
-	 * Goods goodsSelectBygoodsId(String goodsId)throws SQLException;
+	 * 
 	 * */
-	List<Goods> selectStock(int vmNo)throws SQLException;
+	List<Goods> selectStock(String vmNo)throws SQLException;
 	
 	/** 
 	 * 우수현
