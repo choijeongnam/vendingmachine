@@ -21,5 +21,9 @@ public class Test {
 			e.printStackTrace();
 		}
 	}
+	
+	public void aa() {
+		System.out.println("aa");
+	}
 
 }
