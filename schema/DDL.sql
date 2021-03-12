@@ -89,3 +89,15 @@ FROM ORDERS;
 select goods.VM_NO, menu.MENU_NAME, menu.PRICE, goods.stock 
 from goods join menu 
 on goods.menu_code = menu.menu_code and goods.vm_no = 'A03';
+
+
+select sale_date, sum(total_price)일매출, sum(qty)총판매개수 from orders group by sale_date;
+select vm_no, sum(total_price)해당자판기매출 from orders where vm_no = 'a01' from orders group by vm_no;
+
+
+select o1.menu_code, o1.sum(total_price), o1.sum(qty), menu.menu_Name
+from (select menu_code, sum(total_price), sum(qty)
+from orders as o1
+group by menu_code) 
+join menu 
+using(menu_code);

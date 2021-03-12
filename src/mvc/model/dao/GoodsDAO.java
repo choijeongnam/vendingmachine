@@ -18,13 +18,10 @@ public interface GoodsDAO {
 	 *자판기별로 등록을 해야해서
 	 *메뉴에서 갖고와서 굿즈를 인설트를 해줘야해요
 	 * */
-	
 
-	
 	/**
 =======
 	/** 최훈석
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 	 * 재고 보충하기
 	 * 굿즈테이블에서만 업데이트 해주면 됩니다.
 	 * update set stock(stock +) from goods where ? = 어떤메뉴 ? = 어떤 자판기
