@@ -27,7 +27,7 @@ public interface GoodsDAO {
 	 * 최훈석
 	 * 재고 보충하기
 	 * 굿즈테이블에서만 업데이트 해주면 됩니다.
-	 * update set stock(stock +) from goods where ? = 어떤메뉴 ? = 어떤 자판기
+	 * update goods set stock = stock+? where vm_no = ?
 	 * */
 	int goodsInsert(Goods goods)throws SQLException;
 

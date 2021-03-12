@@ -55,5 +55,28 @@ public class GoodsDAOImpl implements GoodsDAO {
 	}
 
 	
+	/**
+	 * 재고 보충하기
+	 * */
+	@Override
+	public int goodsInsert(Goods goods) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "update goods set stock = stock+? where vm_no = ?";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, goods.getStock());
+			ps.setString(2, goods.getVmNo());
+			result = ps.executeUpdate();
+		}finally {
+			DBUtil.dbClose(con, ps);
+		}
+		
+		return result;
+	}
+
+	
 
 }
