@@ -37,4 +37,6 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return goodsList;
 	}
 
+	
+
 }

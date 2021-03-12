@@ -19,7 +19,7 @@ public interface GoodsDAO {
 	 *메뉴에서 갖고와서 굿즈를 인설트를 해줘야해요
 	 * */
 	
-<<<<<<< HEAD
+
 	
 	/**
 =======
@@ -37,6 +37,7 @@ public interface GoodsDAO {
 	 * select  자판기번호, name, stock  
 	 * from goods where 자판기번호 = ?
 	 * */
+	
 	
 	/** 우수현
 	 * goods랑 menu 테이블이 두개인데
