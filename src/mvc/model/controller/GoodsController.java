@@ -21,4 +21,16 @@ public class GoodsController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
+	
+	/**
+	 * 재고 보충
+	 * */
+	public static void goodsInsert(Goods goods) {
+		try {
+			goodsService.goodsInsert(goods);
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
+	
 }

@@ -16,8 +16,6 @@ public class EndView {
 			System.out.println("   "+goods.getStock());
 		}
 		System.out.println();
-		
-	
 	}
 
 }

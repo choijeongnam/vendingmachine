@@ -25,13 +25,9 @@ public class GoodsService {
 	/**
 	 * 재고 보충하기
 	 * */
-	public int goodsInsert(Goods goods) throws SQLException{
+	public void goodsInsert(Goods goods) throws SQLException{
 		int result = goodsDAO.goodsInsert(goods);
-		if(result == 0) {
-			throw new SQLException("재고 보충 오류");
-		}
-		
-		return result;
+		if(result == 0) throw new SQLException("재고 보충 오류");
 	}
 	
 }
