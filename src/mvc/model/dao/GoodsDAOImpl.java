@@ -9,16 +9,17 @@ import java.util.List;
 
 import mvc.model.dto.Goods;
 import mvc.model.dto.Menu;
+import mvc.model.dto.VMGoods;
 import mvc.util.DBUtil;
 
 public class GoodsDAOImpl implements GoodsDAO {
 
 	@Override
-	public List<Goods> goodsSelect(String vmNo) throws SQLException {
+	public List<VMGoods> goodsSelect(String vmNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Goods> goodsList = new ArrayList<Goods>();
+		List<VMGoods> goodsList = new ArrayList<VMGoods>();
 		String sql = "select goods.VM_NO, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock from goods join menu on goods.menu_code = menu.menu_code and goods.vm_no = ?";
 		try {
 			con = DBUtil.getConnection();
@@ -26,12 +27,8 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps.setString(1, vmNo);
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
-				
-				Menu menu = new Menu(0, rs.getString(2), rs.getInt(3), rs.getInt(4));
-				
-				Goods goods = new Goods(0, 0, rs.getString(1), rs.getInt(5), menu);
-				new Goods
+			while(rs.next()) {				
+				VMGoods goods = new VMGoods( rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4),rs.getInt(5));
 				goodsList.add(goods);
 			}
 		}finally {

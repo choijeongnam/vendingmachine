@@ -7,10 +7,6 @@ import mvc.model.dto.Menu;
 
 
 public interface MenuDAO {
-	/**
-	 * 메뉴 보여주기
-	 * */
-	List<Menu> goodsSelect() throws SQLException;
 	
 	/**
 	 * 메뉴 검색하기 
