@@ -23,7 +23,9 @@ public class Test {
 
 		
 	}
+	
 public void aa() {
 			System.out.println("dd");
+			System.out.println("bb");
 		}
 }
