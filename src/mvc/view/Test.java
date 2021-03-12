@@ -20,8 +20,10 @@ public class Test {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("*******");
+
 		
 	}
-
+public void aa() {
+			System.out.println("dd");
+		}
 }
