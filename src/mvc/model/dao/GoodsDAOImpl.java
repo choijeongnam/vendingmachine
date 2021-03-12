@@ -61,6 +61,12 @@ public class GoodsDAOImpl implements GoodsDAO {
 		
 	}
 
+	@Override
+	public int goodsInsert(Goods goods) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 
 }
