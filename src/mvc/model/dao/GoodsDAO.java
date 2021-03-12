@@ -46,8 +46,18 @@ public interface GoodsDAO {
 	 * goods랑 menu 테이블이 두개인데
 	 * 삭제라는 게 menu에 잇는 그 상품을 없앤다는 것인지
 	 * 아니면 goods에 잇는 상품을 뺀다는 것인지
-	 * delete from goods where 자판기번호 = ? and menuname =?	 
+	 * delete from goods where 자판기번호 = ? and menuname =?
+	 */
+	
+	/**
+	 * 자판기에 있는 메뉴 삭제하기(goods에 있는 상품 빼는거	) 
+	 * delete from goods where menu_code = 200 and upper(vm_no) = upper(?)
 	 * */
+	int menuOnvmDelete(Goods goods) throws SQLException; 
+	
+	
+	
+	
 	
 	
 	

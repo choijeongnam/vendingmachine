@@ -33,4 +33,14 @@ public class GoodsController {
 		}
 	}
 	
+	/**
+	 * 자판기에 있는 메뉴 삭제하기
+	 * */
+	public static void menuOnvmDelete(Goods goods) {
+		try {
+			goodsService.menuOnvmDelete(goods);
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
 }

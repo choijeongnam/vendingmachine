@@ -30,4 +30,11 @@ public class GoodsService {
 		if(result == 0) throw new SQLException("재고 보충 오류");
 	}
 	
+	/**
+	 * 자판기에 있는 메뉴 삭제하기
+	 * */
+	public void menuOnvmDelete(Goods goods) throws SQLException{
+		int result = goodsDAO.menuOnvmDelete(goods);
+		if(result == 0) throw new SQLException("자판기의 메뉴가 삭제되지 않았습니다.");
+	}
 }

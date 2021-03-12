@@ -6,6 +6,9 @@ import mvc.model.dto.Goods;
 
 public class EndView {
 
+	/**
+	 * 재고확인하기
+	 * */
 	public static void printStock(List<Goods> list) {
 		System.out.println("상품개수 : "+list.size()+"\n");
 		

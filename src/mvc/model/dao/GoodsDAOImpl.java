@@ -83,6 +83,24 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
+	@Override
+	public int menuOnvmDelete(Goods goods) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "delete from goods where menu_code = ? and upper(vm_no) = upper(?)";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, goods.getMenuCode());
+			ps.setString(2, goods.getVmNo());
+			result = ps.executeUpdate();
+		}finally {
+			DBUtil.dbClose(con, ps);
+		}
+		return result;
+	}
+
 	
 
 }

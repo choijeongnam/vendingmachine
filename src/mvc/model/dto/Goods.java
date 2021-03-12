@@ -23,6 +23,7 @@ public class Goods {
 		this.vmNo = vmNo;
 		this.stock =stock;
 	}
+	
 
 	public int getGoodsSeq() {
 		return goodsSeq;

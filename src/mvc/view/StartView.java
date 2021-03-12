@@ -1,6 +1,7 @@
 package mvc.view;
 
 import mvc.model.controller.GoodsController;
+import mvc.model.dto.Goods;
 
 public class StartView {
 
@@ -52,6 +53,8 @@ public class StartView {
 		 * */
 		
 		//GoodsController.selectStock("A01");
+		//Goods goods = new Goods(200, "A01", 0);
+		//GoodsController.menuOnvmDelete(goods);
 	}
 
 }
