@@ -37,4 +37,23 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return goodsList;
 	}
 
+	@Override
+	public List<Goods> selectStock(int vmNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
+		String sql = "select menu_code, vm_no, stock from goods where upper(vm_no)=upper(?)";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+		}finally {
+			
+		}
+		return null;
+	}
+
+	
+
 }

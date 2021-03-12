@@ -23,9 +23,15 @@ public interface OrdersDAO {
 	
 	/** 각자 공부하기
 	 * 일별 매출 보기
+	 * select sale_date, sum(total_price)일매출, sum(qty)총판매개수 from orders group by sale_date;
+
 	 * */
 	
 	/** 각자 공부하기
 	 * 상품별 매출 보기
+	 * select m.menu_name 메뉴이름, o.total 판매액, o.qty 판매개수 
+	 *	from (select menu_code, sum(total_price) total, sum(qty) qty from orders group by menu_code) o
+	 *	join menu m
+	 *	using(menu_code);
 	 * */
 }
