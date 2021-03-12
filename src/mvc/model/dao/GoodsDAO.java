@@ -20,7 +20,6 @@ public interface GoodsDAO {
 	 * */
 
 	/**
-=======
 	/** 최훈석
 	 * 재고 보충하기
 	 * 굿즈테이블에서만 업데이트 해주면 됩니다.
@@ -33,8 +32,9 @@ public interface GoodsDAO {
 	 * 굿즈테이블에서 재고 전체 조회니까 이거는 조인안하셔되빈다
 	 * select  자판기번호, name, stock  
 	 * from goods where 자판기번호 = ?
+	 * Goods goodsSelectBygoodsId(String goodsId)throws SQLException;
 	 * */
-	
+	List<Goods> selectStock(int vmNo)throws SQLException;
 	
 	/** 우수현
 	 * goods랑 menu 테이블이 두개인데
