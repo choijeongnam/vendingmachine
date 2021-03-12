@@ -29,9 +29,7 @@ public interface GoodsDAO {
 	 * 굿즈테이블에서만 업데이트 해주면 됩니다.
 	 * update set stock(stock +) from goods where ? = 어떤메뉴 ? = 어떤 자판기
 	 * */
-	static void test() {
-		
-	}
+	int goodsInsert(Goods goods)throws SQLException;
 
 	/** 
 	 * 우수현
