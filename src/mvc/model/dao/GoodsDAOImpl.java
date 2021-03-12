@@ -38,7 +38,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	}
 
 	@Override
-	public List<Goods> selectStock(int vmNo) throws SQLException {
+	public List<Goods> selectStock(String vmNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -47,11 +47,24 @@ public class GoodsDAOImpl implements GoodsDAO {
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, vmNo);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Goods goods = new Goods(rs.getInt(1), rs.getString(2), rs.getInt(3));
+				list.add(goods);
+			}
 			
 		}finally {
-			
+			DBUtil.dbClose(con, ps, rs);
 		}
-		return null;
+		return list;
+		
+	}
+
+	@Override
+	public int goodsInsert(Goods goods) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

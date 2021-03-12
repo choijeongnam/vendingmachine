@@ -18,6 +18,11 @@ public class Goods {
 		this.stock = stock;
 		this.menu = menu;
 	}
+	public Goods(int menuCode, String vmNo, int stock) {
+		this.menuCode = menuCode;
+		this.vmNo = vmNo;
+		this.stock =stock;
+	}
 
 	public int getGoodsSeq() {
 		return goodsSeq;
