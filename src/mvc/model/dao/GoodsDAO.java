@@ -19,7 +19,6 @@ public interface GoodsDAO {
 	 *메뉴에서 갖고와서 굿즈를 인설트를 해줘야해요
 	 * */
 	
-<<<<<<< HEAD
 	
 	/**
 =======
