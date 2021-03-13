@@ -6,13 +6,16 @@ import java.util.List;
 import mvc.model.controller.GoodsController;
 import mvc.model.dao.GoodsDAO;
 import mvc.model.dao.GoodsDAOImpl;
+import mvc.model.dao.OrdersDAO;
+import mvc.model.dao.OrdersDAOImpl;
 import mvc.model.dto.Goods;
 import mvc.model.dto.VMGoods;
 
 public class StartView {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		//MenuView.printMenu();
 		/*
 		 *             **00자판기 입니다**
 		 * 				메뉴를 선택해주세요
@@ -62,23 +65,13 @@ public class StartView {
 		//Goods goods = new Goods(200, "A01", 0);
 		//GoodsController.menuOnvmDelete(goods);
 		
-		
-		
-		
-		
-		
+		OrdersDAO dao =new OrdersDAOImpl();
+		try {
+		int result =dao.ordersInsert(100, "A01", 3);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	
-	
-			// TODO Auto-generated method stub
-			GoodsDAO g = new GoodsDAOImpl();
-			try {
-			List<VMGoods> goodsList= g.goodsSelect("A03");
-			for(VMGoods goods : goodsList) {
-				System.out.println(goods);
-			}
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
 	
 	}
 

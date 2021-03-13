@@ -76,7 +76,7 @@ INSERT INTO GOODS VALUES(GOODS_SEQ.NEXTVAL
 INSERT INTO ORDERS VALUES(ORDER_SEQ.NEXTVAL
 ,200, 'A01', 2, 8000, 2021-02-26);
 INSERT INTO ORDERS VALUES(ORDER_SEQ.NEXTVAL
-,200, 'A01', 2, 8000, '2021-02-27');
+,200, 'A01', 2, 8000, sysdate);
 COMMIT;
 ROLLBACK;
 update goods set stock=stock-2 where goods_SEQ = 11;
@@ -108,4 +108,13 @@ on menu.menu_code = goods.menu_code and goods.vm_no = 'a03';
 INSERT INTO GOODS VALUES(GOODS_SEQ.NEXTVAL
 ,'200', 'A03', 10);
 
-SELECT * FROM GOODS;
+SELECT * FROM orders;
+
+
+INSERT INTO ORDERS VALUES(ORDERS_SEQ.NEXTVAL, MENU_CODE, VM_NO, QTY, TOTAL_PRICE, SYSDATE);
+
+select stock from goods where menu_code = 100 and vm_no = 'A03';
+
+update goods set stock=stock-2 where menu_code = 100 and vm_no = 'A03';
+
+rollback

@@ -19,7 +19,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		 Connection con=null;
 		  PreparedStatement ps=null;
 		  String sql="INSERT INTO ORDERS(ORDER_SEQ , MENU_CODE, VM_NO, QTY, TOTAL_PRICE, SALE_DATE)"
-		  		+ "VALUES(ORDERS_SEQ.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
+		  		+ "VALUES(ORDER_SEQ.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
 		  int result=0;
 		 try {
 			
@@ -27,30 +27,30 @@ public class OrdersDAOImpl implements OrdersDAO {
 		   con.setAutoCommit(false);
 		   
 		   ps = con.prepareStatement(sql);
+		   if(qty == 0) {throw new SQLException("수량 0개를 입력하셨습니다. 다시 입력해주십시오");}
 		   ps.setInt(1, menuCode);
 		   ps.setString(2, vmNo);
 		   ps.setInt(3, qty);
 		   ps.setInt(4, qty*getTotalAmount(menuCode));
-		   if(qty == 0) {throw new SQLException("수량 0개를 입력하셨습니다. 다시 입력해주십시오");}
+		  
 		   result = ps.executeUpdate();
 		   if(result==0) {
 			   con.rollback();
 			   throw new SQLException("주문 실패...");   
 		   }
 			   //주문수량만큼 재고량 감소하기
-		   result = decrementStock(con, menuCode, vmNo, qty);
+		   int stockResult = decrementStock(con, menuCode, vmNo, qty);
 		   if(result == 0) {
 				  con.rollback();
 				  throw new SQLException("재고량 부족으로 구매하실 수 없습니다.");
 			  }
 		   con.commit();
-		  
 		
 		   }finally {
 		    	  con.commit();
 		      	DBUtil.dbClose(con, ps, null);
 		      }
-		 return 0;
+		 return result;
 	}
 	
 	
@@ -98,6 +98,16 @@ public class OrdersDAOImpl implements OrdersDAO {
 			DBUtil.dbClose(null, ps);
 		}
 		return result;
+	}
+
+
+	@Override
+	public List<Orders> printOrderList() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		
+		return null;
 	}
 	
 }
