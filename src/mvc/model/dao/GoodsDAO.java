@@ -12,7 +12,7 @@ public interface GoodsDAO {
 	 * 최정남
 	 * 지점 별 메뉴보여주기
 	 * */
-	Goods goodsSelect(String vmNo) throws SQLException;
+	List<VMGoods> goodsSelect(String vmNo) throws SQLException;
 	
 	/** 
 	 * 최정남
@@ -20,7 +20,7 @@ public interface GoodsDAO {
 	 *자판기별로 등록을 해야해서
 	 *메뉴에서 갖고와서 굿즈를 인설트를 해줘야해요
 	 * */
-	
+	int goodsInsert(String vm, int menuCode) throws SQLException;
 	
 
 	/** 

@@ -101,3 +101,6 @@ join menu m
 using(menu_code);
 
 
+select menu.menu_name, menu.price, menu.kcal 
+from menu join goods 
+on menu.menu_code = goods.menu_code and goods.vm_no = 'a03';

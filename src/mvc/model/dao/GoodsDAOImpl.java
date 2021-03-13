@@ -1,6 +1,7 @@
 package mvc.model.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,39 +16,36 @@ import mvc.util.DBUtil;
 public class GoodsDAOImpl implements GoodsDAO {
 	
 	@Override
-	public Goods goodsSelect(String vmNo) throws SQLException {
+	public List<VMGoods> goodsSelect(String vmNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		Goods goods = null;
-		List<Menu> menuList = null;
-		Menu menu = null;
-		String sql = "select goods.VM_NO, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock from goods join menu on goods.menu_code = menu.menu_code and goods.vm_no = ?";
+		List<VMGoods> goodsList = new ArrayList<VMGoods>();
+		String sql = "select goods.VM_NO, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock \r\n"
+				+ "from goods join menu \r\n"
+				+ "on goods.menu_code = menu.menu_code and goods.vm_no = ?";
 		try {
 			con = DBUtil.getConnection();
 			ps  = con.prepareStatement(sql);
 			ps.setString(1, vmNo);
 			rs = ps.executeQuery();
-			
+			String overlap = vmNo;
 			while(rs.next()) {				
-				goods = new Goods(0, rs.getString(1), rs.getInt(5));
+				String number = rs.getString(1);
+				if(number.equals(overlap)) {
+					number = "\t";
+				}
+				VMGoods goods = new VMGoods(number, rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
 				
-				menu.setMenuName(rs.getString(2));
-				menu.setPrice(rs.getInt(3));
-				menu.setKcal(rs.getInt(4));
 				
-				menuList.add(menu);
-				
-				goods.setMenuList(menuList);
-				System.out.println(goods);
+				goodsList.add(goods);
 			}
 		}finally {
 			DBUtil.dbClose(con, ps, rs);
 		}
-		return goods;
+		return goodsList;
 	}
-
+	
 	@Override
 	public List<Goods> selectStock(String vmNo) throws SQLException {
 		Connection con = null;
@@ -110,6 +108,12 @@ public class GoodsDAOImpl implements GoodsDAO {
 			DBUtil.dbClose(con, ps);
 		}
 		return result;
+	}
+
+	@Override
+	public int goodsInsert(String vm, int menuCode) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	
