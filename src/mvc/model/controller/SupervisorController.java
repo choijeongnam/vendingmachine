@@ -15,7 +15,7 @@ public class SupervisorController {
 		try {
 			Supervisor supervisor = supervisorService.login(svId, Password);
 			// 보현님이 작성해주시는 printMenu 필요!!
-			//MenuView.
+			// MenuView.
 		}catch(Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
