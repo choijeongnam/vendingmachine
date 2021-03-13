@@ -108,7 +108,7 @@ on menu.menu_code = goods.menu_code and goods.vm_no = 'a03';
 INSERT INTO GOODS VALUES(GOODS_SEQ.NEXTVAL
 ,'200', 'A03', 10);
 
-SELECT * FROM orders;
+SELECT * FROM goods;
 
 
 INSERT INTO ORDERS VALUES(ORDERS_SEQ.NEXTVAL, MENU_CODE, VM_NO, QTY, TOTAL_PRICE, SYSDATE);

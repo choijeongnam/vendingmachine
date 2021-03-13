@@ -9,12 +9,14 @@ public class MenuView {
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static void menu() {
+		int menu = 0;
 		while(true) {
 			SessionSet ss = SessionSet.getInstance();
 			System.out.println(ss.getSet()); //技记 皋家靛 积己
 			
 			MenuView.printMenu();
-			int menu = Integer.parseInt(sc.nextLine());
+			System.out.print("涝仿> ");
+			menu = Integer.parseInt(sc.nextLine());
 			switch(menu) {
 			case 1 : 
 				//力前备概
