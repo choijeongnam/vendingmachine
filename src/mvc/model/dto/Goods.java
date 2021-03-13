@@ -8,16 +8,8 @@ public class Goods {
 	private int menuCode;
 	private String vmNo;
 	private int stock;
-	private Menu menu;
+	private List<Menu> menuList = new ArrayList<Menu>();
 	
-	public Goods(int goodsSeq, int menuCode, String vmNo, int stock, Menu menu) {
-		super();
-		this.goodsSeq = goodsSeq;
-		this.menuCode = menuCode;
-		this.vmNo = vmNo;
-		this.stock = stock;
-		this.menu = menu;
-	}
 	public Goods(int menuCode, String vmNo, int stock) {
 		this.menuCode = menuCode;
 		this.vmNo = vmNo;
@@ -59,15 +51,12 @@ public class Goods {
 
 	
 
-
-	public Menu getMenu() {
-		return menu;
+	public List<Menu> getMenuList() {
+		return menuList;
 	}
-
-	public void setMenu(Menu menu) {
-		this.menu = menu;
+	public void setMenuList(List<Menu> menuList) {
+		this.menuList = menuList;
 	}
-
 	@Override
 	public String toString() {
 		return goodsSeq + " | " + menuCode + " | " + vmNo + " | " + stock;

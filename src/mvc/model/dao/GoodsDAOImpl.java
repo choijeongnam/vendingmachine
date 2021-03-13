@@ -1,6 +1,7 @@
 package mvc.model.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,22 +14,30 @@ import mvc.model.dto.VMGoods;
 import mvc.util.DBUtil;
 
 public class GoodsDAOImpl implements GoodsDAO {
-
+	
 	@Override
 	public List<VMGoods> goodsSelect(String vmNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<VMGoods> goodsList = new ArrayList<VMGoods>();
-		String sql = "select goods.VM_NO, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock from goods join menu on goods.menu_code = menu.menu_code and goods.vm_no = ?";
+		String sql = "select goods.VM_NO, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock \r\n"
+				+ "from goods join menu \r\n"
+				+ "on goods.menu_code = menu.menu_code and goods.vm_no = ?";
 		try {
 			con = DBUtil.getConnection();
 			ps  = con.prepareStatement(sql);
 			ps.setString(1, vmNo);
 			rs = ps.executeQuery();
-			
+			String overlap = vmNo;
 			while(rs.next()) {				
-				VMGoods goods = new VMGoods( rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4),rs.getInt(5));
+				String number = rs.getString(1);
+				if(number.equals(overlap)) {
+					number = "\t";
+				}
+				VMGoods goods = new VMGoods(number, rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+				
+				
 				goodsList.add(goods);
 			}
 		}finally {
@@ -36,7 +45,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		}
 		return goodsList;
 	}
-
+	
 	@Override
 	public List<Goods> selectStock(String vmNo) throws SQLException {
 		Connection con = null;
@@ -101,6 +110,50 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
+	@Override
+	public int goodsInsert(String vm, int menuCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "insert into goods values(GOODS_SEQ.NEXTVAL, ?, ?, 10)";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, menuCode);
+			ps.setString(2, vm);
+			if(duplicateByMenuCode(vm, menuCode)) {
+				throw new SQLException("이미 존재하는 메뉴입니다.");
+			}
+			result = ps.executeUpdate();
+		}finally {
+			DBUtil.dbClose(con, ps);
+		}
+		return result;
+	}
+
 	
+	public boolean duplicateByMenuCode(String vm,int menuCode) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql= "select menu_code from goods where menu_code = ? and vm_no = ?";
+		ResultSet rs = null;
+		boolean result = false;
+		try {
+			con = DBUtil.getConnection();
+			ps= con.prepareStatement(sql);
+			ps.setInt(1, menuCode);
+			ps.setString(2, vm);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result = true;
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(null, ps, rs);
+		}
+		return result;
+	}
 
 }

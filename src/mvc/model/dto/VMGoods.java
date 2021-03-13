@@ -46,8 +46,8 @@ public class VMGoods {
 	}
 	@Override
 	public String toString() {
-		return "VMGoods [vmNo=" + vmNo + ", menuName=" + menuName + ", price=" + price + ", kcal=" + kcal + ", stock="
-				+ stock + "]";
+		return vmNo + " | " + menuName + " | " + price + " | " + kcal + " | "
+				+ stock;
 	}
 	
 	
