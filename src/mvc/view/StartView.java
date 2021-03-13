@@ -15,7 +15,7 @@ public class StartView {
 
 	public static void main(String[] args) {
 
-		//MenuView.printMenu();
+		MenuView.printMenu();
 		/*
 		 *             **00자판기 입니다**
 		 * 				메뉴를 선택해주세요
@@ -64,15 +64,24 @@ public class StartView {
 		//GoodsController.selectStock("A01");
 		//Goods goods = new Goods(200, "A01", 0);
 		//GoodsController.menuOnvmDelete(goods);
-		
+		/*
 		OrdersDAO dao =new OrdersDAOImpl();
 		try {
 		int result =dao.ordersInsert(100, "A01", 3);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-	
-	
+	*/
+		/*
+		GoodsDAO dao = new GoodsDAOImpl();
+		Goods goods = new Goods(200, "A03", 0);
+		try {
+			dao.menuOnvmDelete(goods);
+		System.out.println("삭제");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		*/
 	}
 
 }
