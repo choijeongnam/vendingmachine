@@ -1,6 +1,10 @@
 package mvc.view;
 
+import java.sql.SQLException;
+
 import mvc.model.controller.GoodsController;
+import mvc.model.dao.GoodsDAO;
+import mvc.model.dao.GoodsDAOImpl;
 import mvc.model.dto.Goods;
 
 public class StartView {
@@ -55,6 +59,25 @@ public class StartView {
 		//GoodsController.selectStock("A01");
 		//Goods goods = new Goods(200, "A01", 0);
 		//GoodsController.menuOnvmDelete(goods);
+		
+		
+		
+		
+		
+		
+		
+		
+	
+			// TODO Auto-generated method stub
+			GoodsDAO g = new GoodsDAOImpl();
+			try {
+			Goods gg= g.goodsSelect("A03");
+			System.out.println(gg +"|"+ gg.getMenuList());
+			
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+	
 	}
 
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import mvc.model.dao.GoodsDAO;
 import mvc.model.dao.GoodsDAOImpl;
 import mvc.model.dto.Goods;
-import mvc.model.dto.VMGoods;
 
 public class Test {
 
@@ -14,10 +13,9 @@ public class Test {
 		// TODO Auto-generated method stub
 		GoodsDAO g = new GoodsDAOImpl();
 		try {
-		List<VMGoods> gg= g.goodsSelect("A03");
-		for(VMGoods ggg :gg) {
-			System.out.println(ggg);
-		}
+		Goods gg= g.goodsSelect("A03");
+		System.out.println(gg +"|"+ gg.getMenuList());
+		
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

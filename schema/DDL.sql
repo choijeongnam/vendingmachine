@@ -95,9 +95,9 @@ select sale_date, sum(total_price)일매출, sum(qty)총판매개수 from orders group b
 select vm_no, sum(total_price)해당자판기매출 from orders where vm_no = 'a01' from orders group by vm_no;
 
 
-select o1.menu_code, o1.sum(total_price), o1.sum(qty), menu.menu_Name
-from (select menu_code, sum(total_price), sum(qty)
-from orders as o1
-group by menu_code) 
-join menu 
+select m.menu_name 메뉴이름, o.total 판매액, o.qty 판매개수 
+from (select menu_code, sum(total_price) total, sum(qty) qty from orders group by menu_code) o
+join menu m
 using(menu_code);
+
+

@@ -12,7 +12,7 @@ public interface GoodsDAO {
 	 * 최정남
 	 * 지점 별 메뉴보여주기
 	 * */
-	List<VMGoods> goodsSelect(String vmNo) throws SQLException;
+	Goods goodsSelect(String vmNo) throws SQLException;
 	
 	/** 
 	 * 최정남
