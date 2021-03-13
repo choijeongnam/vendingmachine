@@ -112,10 +112,48 @@ public class GoodsDAOImpl implements GoodsDAO {
 
 	@Override
 	public int goodsInsert(String vm, int menuCode) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "insert into goods values(GOODS_SEQ.NEXTVAL, ?, ?, 10)";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, menuCode);
+			ps.setString(2, vm);
+			if(duplicateByMenuCode(vm, menuCode)) {
+				throw new SQLException("이미 존재하는 메뉴입니다.");
+			}
+			result = ps.executeUpdate();
+		}finally {
+			DBUtil.dbClose(con, ps);
+		}
+		return result;
 	}
 
 	
+	public boolean duplicateByMenuCode(String vm,int menuCode) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql= "select menu_code from goods where menu_code = ? and vm_no = ?";
+		ResultSet rs = null;
+		boolean result = false;
+		try {
+			con = DBUtil.getConnection();
+			ps= con.prepareStatement(sql);
+			ps.setInt(1, menuCode);
+			ps.setString(2, vm);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result = true;
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(null, ps, rs);
+		}
+		return result;
+	}
 
 }

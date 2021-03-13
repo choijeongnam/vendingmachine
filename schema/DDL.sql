@@ -62,8 +62,8 @@ INSERT INTO VM VALUES('A01', '∞≠≥≤', 'ªÔº∫', 'SSVM01', 'ADMIN');
 INSERT INTO VM VALUES('A02', 'øÎ¿Œ', 'ªÔº∫', 'SSVM01', 'ADMIN');
 INSERT INTO VM VALUES('A03', 'º≠√ ', 'LG', 'LGVM02', 'ADMIN');
 
-INSERT INTO GOODS VALUES(GOODS_SEQ.NEXTVAL
-,'100', 'A03', 10);
+
+
 INSERT INTO GOODS VALUES(GOODS_SEQ.NEXTVAL
 ,'200', 'A03', 10);
 INSERT INTO GOODS VALUES(GOODS_SEQ.NEXTVAL
@@ -104,3 +104,8 @@ using(menu_code);
 select menu.menu_name, menu.price, menu.kcal 
 from menu join goods 
 on menu.menu_code = goods.menu_code and goods.vm_no = 'a03';
+
+INSERT INTO GOODS VALUES(GOODS_SEQ.NEXTVAL
+,'200', 'A03', 10);
+
+SELECT * FROM GOODS;
