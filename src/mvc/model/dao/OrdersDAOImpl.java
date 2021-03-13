@@ -105,7 +105,14 @@ public class OrdersDAOImpl implements OrdersDAO {
 	public List<Orders> printOrderList() throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		
+		ResultSet rs = null;
+		String sql = "select * from Orders";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+		}finally {
+			
+		}
 		
 		return null;
 	}
