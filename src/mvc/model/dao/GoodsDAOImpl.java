@@ -22,6 +22,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		
 		Goods goods = null;
 		List<Menu> menuList = null;
+		Menu menu = null;
 		String sql = "select goods.VM_NO, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock from goods join menu on goods.menu_code = menu.menu_code and goods.vm_no = ?";
 		try {
 			con = DBUtil.getConnection();
@@ -32,10 +33,14 @@ public class GoodsDAOImpl implements GoodsDAO {
 			while(rs.next()) {				
 				goods = new Goods(0, rs.getString(1), rs.getInt(5));
 				
-				Menu menu = new Menu(0, rs.getString(2), rs.getInt(3), rs.getInt(4));
+				menu.setMenuName(rs.getString(2));
+				menu.setPrice(rs.getInt(3));
+				menu.setKcal(rs.getInt(4));
 				
 				menuList.add(menu);
+				
 				goods.setMenuList(menuList);
+				System.out.println(goods);
 			}
 		}finally {
 			DBUtil.dbClose(con, ps, rs);
