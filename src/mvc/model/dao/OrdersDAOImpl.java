@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import mvc.model.dto.Orders;
@@ -106,15 +107,20 @@ public class OrdersDAOImpl implements OrdersDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		Orders orders = null;
+		List<Orders> orderList = new ArrayList<Orders>();
 		String sql = "select * from Orders";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
 		}finally {
+			orders = new Orders(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6));
 			
+			orderList.add(orders);
 		}
 		
-		return null;
+		return orderList;
 	}
 	
 }
