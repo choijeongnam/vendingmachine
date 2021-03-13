@@ -15,7 +15,7 @@ public class StartView {
 
 	public static void main(String[] args) {
 
-		//MenuView.printMenu();
+		MenuView.printMenu();
 		/*
 		 *             **00자판기 입니다**
 		 * 				메뉴를 선택해주세요
