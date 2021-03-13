@@ -11,7 +11,7 @@ public interface OrdersDAO {
 	   *  1) orders테이블에 insert
 	   *  2) 재고량(stock)감소 시키기(update)
 	   * */
-	int orderInsert(Orders order)throws SQLException;
+	int ordersInsert(int menuCode, String vmNo, int qty)throws SQLException;
 	/**
 	 * 관리자가 주문내역 보기
 	 * file생성해서 처리할 예정
