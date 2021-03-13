@@ -114,10 +114,13 @@ public class OrdersDAOImpl implements OrdersDAO {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
+			while(rs.next()) {
+				orders = new Orders(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6));
+				
+				orderList.add(orders);
+			}
 		}finally {
-			orders = new Orders(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6));
-			
-			orderList.add(orders);
+			DBUtil.dbClose(con, ps, rs);
 		}
 		
 		return orderList;
