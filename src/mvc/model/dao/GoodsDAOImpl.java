@@ -155,5 +155,25 @@ public class GoodsDAOImpl implements GoodsDAO {
 		}
 		return result;
 	}
+	
+	public VMGoods vmGoodselect(Connection con,int menuCode, String vmNo) throws SQLException{
+		VMGoods good = null;
+		PreparedStatement ps = null;
+		ResultSet rs =null;
+		String sql = "select stock from goods where menu_code = ? and upper(vm_no) = upper(?)";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, menuCode);
+			ps.setString(2, vmNo);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				good = new VMGoods(null, null, 0, 0, rs.getInt(1));
+			}
+		}finally {
+			DBUtil.dbClose(null, ps, rs);
+		}
+		return good;
+	}
 
 }

@@ -1,5 +1,6 @@
 package mvc.model.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -56,6 +57,10 @@ public interface GoodsDAO {
 	int menuOnvmDelete(Goods goods) throws SQLException; 
 	
 	
+	/**
+	 * 자판기별 해당상품 재고 보기
+	 * */
+	VMGoods vmGoodselect(Connection con,int menuCode, String vmNo) throws SQLException;
 	
 	
 	
