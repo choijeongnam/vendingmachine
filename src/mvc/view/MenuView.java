@@ -30,6 +30,7 @@ public class MenuView {
 	
 	public static void printMenu() {
 		System.out.println("▶ 샐러드 자판기 ◀");
+		System.out.println("▶ 원하시는 항목을 선택해주세요 ◀");
 		System.out.println("1. 구매   |   2. 관리자 로그인   |  9. 종료");
 	}
 	
