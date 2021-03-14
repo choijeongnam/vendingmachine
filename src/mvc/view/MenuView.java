@@ -2,7 +2,9 @@ package mvc.view;
 
 import java.util.Scanner;
 
+import mvc.model.controller.GoodsController;
 import mvc.model.controller.SupervisorController;
+import mvc.session.Session;
 import mvc.session.SessionSet;
 
 public class MenuView {
@@ -36,7 +38,6 @@ public class MenuView {
 	
 	private static void customerService() {
 		
-		
 	}
 
 
@@ -52,15 +53,44 @@ public class MenuView {
 		SessionSet ss = SessionSet.getInstance();
 		System.out.println(ss.getSet());
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
-		System.out.println("1. 로그아웃  |  2. 확인  | 3. ...");
+		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
 		case 1:
-			break;
+			logout(id);
+			return;
 		case 2:
+			
 			break;
 		case 3:
+			
+			break;
+		case 4:
+			
+			break;
+		case 5:
+			
+			break;
+		case 6:
+			
+			break;
+		case 7:
+			
+			break;
+		case 8:
+			
 			break;
 		}
+	}
+	
+	
+	/**
+	 * 로그아웃
+	 * */
+	public static void logout(String svId) {
+		Session session = new Session(svId);
+		
+		SessionSet ss = SessionSet.getInstance();
+		ss.remove(session);
 	}
 }
