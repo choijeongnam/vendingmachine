@@ -6,14 +6,21 @@ import java.util.List;
 import mvc.model.controller.GoodsController;
 import mvc.model.dao.GoodsDAO;
 import mvc.model.dao.GoodsDAOImpl;
+import mvc.model.dao.OrdersDAO;
+import mvc.model.dao.OrdersDAOImpl;
 import mvc.model.dto.Goods;
 import mvc.model.dto.VMGoods;
 
 public class StartView {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		 MenuView.menu();
 		 System.out.println("-----------");
+=======
+
+		MenuView.printMenu();
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 		/*
 		 *             **00자판기 입니다**
 		 * 				메뉴를 선택해주세요
@@ -63,25 +70,24 @@ public class StartView {
 		//GoodsController.selectStock("A01");
 		//Goods goods = new Goods(200, "A01", 0);
 		//GoodsController.menuOnvmDelete(goods);
-		
-		
-		
-		
-		
-		
-	
-	
-			// TODO Auto-generated method stub
-			GoodsDAO g = new GoodsDAOImpl();
-			try {
-			List<VMGoods> goodsList= g.goodsSelect("A03");
-			for(VMGoods goods : goodsList) {
-				System.out.println(goods);
-			}
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-	
+		/*
+		OrdersDAO dao =new OrdersDAOImpl();
+		try {
+		int result =dao.ordersInsert(100, "A01", 3);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	*/
+		/*
+		GoodsDAO dao = new GoodsDAOImpl();
+		Goods goods = new Goods(200, "A03", 0);
+		try {
+			dao.menuOnvmDelete(goods);
+		System.out.println("삭제");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		*/
 	}
 
 }

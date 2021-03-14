@@ -1,6 +1,7 @@
 package mvc.model.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import mvc.model.dto.Orders;
 
@@ -15,8 +16,9 @@ public interface OrdersDAO {
 	/**
 	 * 관리자가 주문내역 보기
 	 * file생성해서 처리할 예정
+	 * 
 	 * */
-	
+	List<Orders> printOrderList()throws SQLException;
 	/** 각자 공부하기
 	 * 자판기별 매출 보기
 	 * */
