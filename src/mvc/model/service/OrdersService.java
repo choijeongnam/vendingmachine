@@ -43,8 +43,20 @@ public class OrdersService {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * 주문 넣기
 	 * */
+=======
+	 * 일별 매출 조회
+	 * */
+	public List<Orders> printDaySalesSelect() throws SQLException{
+		List<Orders> list = ordersDao.printDaySalesSelect();
+		if(list.size() == 0) throw new SQLException("판매 내역이 없습니다.");
+		return list;
+	}
+	
+	
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 	
 	public int ordersInsert(int menuCode, String vmNo, int qty) throws SQLException{
 		int result = ordersDao.ordersInsert(menuCode, vmNo, qty);

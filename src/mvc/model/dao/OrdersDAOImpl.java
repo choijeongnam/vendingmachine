@@ -155,5 +155,31 @@ public class OrdersDAOImpl implements OrdersDAO {
 		}
 		return list;
 	}
+
+
+	@Override
+	public List<Orders> printDaySalesSelect() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Orders> list = new ArrayList<Orders>();
+		String sql = "select sale_date, sum(total_price) 일매출, sum(qty) 총판매개수 from orders group by sale_date";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String saleDate = rs.getString("sale_date");
+				int totalPrice = rs.getInt("total_price");
+				int qty = rs.getInt("qty");
+			
+				Orders orders = new Orders(0, 0, null, qty, totalPrice, saleDate);
+				list.add(orders);
+			}
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
+		return list;
+	}
 	
 }

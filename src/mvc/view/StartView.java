@@ -73,7 +73,8 @@ public class StartView {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-	*/
+		*/
+
 		/*
 		GoodsDAO dao = new GoodsDAOImpl();
 		Goods goods = new Goods(200, "A03", 0);
@@ -84,6 +85,11 @@ public class StartView {
 			e.printStackTrace();
 		}
 		*/
+
+		//OrdersController.printVmSalesSelect();
+		
+		OrdersController.printDaySalesSelect();
+
 	}
 
 }

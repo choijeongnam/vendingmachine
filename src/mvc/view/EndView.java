@@ -47,6 +47,13 @@ public class EndView {
 		for(VMGoods goods :goodsList) {
 			System.out.println(goods);
 		}
-		
+	}
+	/**
+	 * 일별 매출 조회
+	 * */
+	public static void printDaySalesList(List<Orders> list) {
+		for(Orders orders : list) {
+			System.out.println(orders);
+		}
 	}
 }

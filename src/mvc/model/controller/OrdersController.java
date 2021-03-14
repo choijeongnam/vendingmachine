@@ -34,12 +34,24 @@ public class OrdersController {
 		}
 	}
 	
+
 	public static void ordersInsert(int menuCode, String vmNo, int qty) {
 		try {
 			ordersService.ordersInsert(menuCode, vmNo, qty);
 			EndView.printMessage("구매되었습니다.");
 		}catch(SQLException e) {
 			FailView.errorMessage(e.getMessage());
+		}
+	}
+	/**
+	 * 일별 매출 조회
+	 * */
+	public static void printDaySalesSelect() {
+		try {
+			List<Orders> list = ordersService.printDaySalesSelect();
+			EndView.printDaySalesList(list);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

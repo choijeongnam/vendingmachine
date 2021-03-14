@@ -11,9 +11,10 @@ public class MenuView {
 	public static void printMenu() {
 		int menu = 0;
 		while(true) {
+
 			SessionSet ss = SessionSet.getInstance();
 			System.out.println(ss.getSet());
-			
+
 			System.out.println("\t\t**** 샐러드 자판기 ****");
 			System.out.println("\t\t**** 항목 선택 ****");
 			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");

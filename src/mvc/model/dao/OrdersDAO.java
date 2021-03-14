@@ -28,8 +28,8 @@ public interface OrdersDAO {
 	/** 수현
 	 * 일별 매출 보기
 	 * select sale_date, sum(total_price)일매출, sum(qty)총판매개수 from orders group by sale_date;
-
 	 * */
+	List<Orders> printDaySalesSelect() throws SQLException;
 	
 	/** 정남
 	 * 상품별 매출 보기
