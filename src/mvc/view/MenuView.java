@@ -68,6 +68,9 @@ public class MenuView {
 			break;
 		case 3:
 			//GoodsController.selectStock();
+			System.out.print("재고를 확인할 자판기번호 입력>");
+			String vmNo = sc.next();
+			GoodsController.selectStock(vmNo);
 			break;
 		case 4:
 			printStockInsert(id);
