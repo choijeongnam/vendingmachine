@@ -136,7 +136,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Orders> list = new ArrayList<Orders>();
-		String sql = "select vm_no, sum(total_price), sum(qty) from orders group by vm_no";
+		String sql = "select vm_no, sum(total_price) as ÃÑÆÇ¸Å¾×, sum(qty) as ÃÑÆÇ¸Å°³¼ö from orders group by vm_no";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
