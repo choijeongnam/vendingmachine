@@ -23,6 +23,7 @@ public interface OrdersDAO {
 	 * 자판기별 매출 보기
 	 * SELECT VM_NO 자판기번호, SUM(TOTAL_PRICE) 총판매액, SUM(QTY) 총판매개수 FROM ORDERS GROUP BY VM_NO;
 	 * */
+	List<Orders> printVmSalesList() throws SQLException;
 	
 	/** 수현
 	 * 일별 매출 보기
