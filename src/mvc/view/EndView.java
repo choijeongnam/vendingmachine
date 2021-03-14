@@ -3,6 +3,7 @@ package mvc.view;
 import java.util.List;
 
 import mvc.model.dto.Goods;
+import mvc.model.dto.Orders;
 
 public class EndView {
 
@@ -21,4 +22,24 @@ public class EndView {
 		System.out.println();
 	}
 
+
+
+	/**
+	 * 자판기별 매출 조회
+	 * */
+	public static void printVmSalesList(List<Orders> list) {
+		for(Orders orders : list) {
+			System.out.println(orders);
+		}
+	}
+
+
+	/**
+	 * 일별 매출 조회
+	 * */
+	public static void printDaySalesList(List<Orders> list) {
+		for(Orders orders : list) {
+			System.out.println(orders);
+		}
+	}
 }

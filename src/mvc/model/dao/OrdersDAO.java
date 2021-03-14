@@ -19,18 +19,19 @@ public interface OrdersDAO {
 	 * 
 	 * */
 	List<Orders> printOrderList()throws SQLException;
-	/** 각자 공부하기
+	/** 훈석
 	 * 자판기별 매출 보기
 	 * SELECT VM_NO 자판기번호, SUM(TOTAL_PRICE) 총판매액, SUM(QTY) 총판매개수 FROM ORDERS GROUP BY VM_NO;
 	 * */
+	List<Orders> printVmSalesSelect() throws SQLException;
 	
-	/** 각자 공부하기
+	/** 수현
 	 * 일별 매출 보기
 	 * select sale_date, sum(total_price)일매출, sum(qty)총판매개수 from orders group by sale_date;
-
 	 * */
+	List<Orders> printDaySalesSelect() throws SQLException;
 	
-	/** 각자 공부하기
+	/** 정남
 	 * 상품별 매출 보기
 	 * select m.menu_name 메뉴이름, o.total 판매액, o.qty 판매개수 
 	 *	from (select menu_code, sum(total_price) total, sum(qty) qty from orders group by menu_code) o
