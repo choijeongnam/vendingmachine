@@ -10,6 +10,7 @@ import mvc.model.dao.GoodsDAOImpl;
 import mvc.model.dao.OrdersDAO;
 import mvc.model.dao.OrdersDAOImpl;
 import mvc.model.dto.Goods;
+import mvc.model.dto.Orders;
 import mvc.model.dto.VMGoods;
 import mvc.model.service.OrdersService;
 
@@ -88,8 +89,19 @@ public class StartView {
 
 		//OrdersController.printVmSalesSelect();
 		
+
 		//OrdersController.printDaySalesSelect();
 
+		OrdersDAO dao = new OrdersDAOImpl();
+		try {
+		List<Orders> list=dao.printDaySalesSelect();
+		
+		for(Orders o :list) {
+			System.out.println(o);
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

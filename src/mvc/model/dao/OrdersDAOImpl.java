@@ -170,8 +170,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				String saleDate = rs.getString("sale_date");
-				int totalPrice = rs.getInt("total_price");
-				int qty = rs.getInt("qty");
+				int totalPrice = rs.getInt("일매출");
+				int qty = rs.getInt("총판매개수");
 			
 				Orders orders = new Orders(0, 0, null, qty, totalPrice, saleDate);
 				list.add(orders);

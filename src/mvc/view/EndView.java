@@ -52,8 +52,10 @@ public class EndView {
 	 * 일별 매출 조회
 	 * */
 	public static void printDaySalesList(List<Orders> list) {
+		System.out.println("일별 매출 확인하기");
 		for(Orders orders : list) {
-			System.out.println(orders);
+			System.out.println(orders.getSaleDate());
 		}
 	}
+	
 }
