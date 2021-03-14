@@ -143,8 +143,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				String vmNo = rs.getString("vm_no");
-				int totalPrice = rs.getInt("total_price");
-				int qty = rs.getInt("qty");
+				int totalPrice = rs.getInt("ÃÑÆÇ¸Å¾×");
+				int qty = rs.getInt("ÃÑÆÇ¸Å°³¼ö");
 				
 				Orders orders = new Orders(0, 0, vmNo, qty, totalPrice, null);
 				

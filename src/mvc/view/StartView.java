@@ -18,7 +18,7 @@ public class StartView {
 
 	public static void main(String[] args) {
 
-		//MenuView.printMenu();
+		MenuView.printMenu();
 		/*
 		 *             **00자판기 입니다**
 		 * 				메뉴를 선택해주세요
@@ -90,18 +90,18 @@ public class StartView {
 		//OrdersController.printVmSalesSelect();
 		
 
-		//OrdersController.printDaySalesSelect();
 
+		//OrdersController.printDaySalesSelect();
+/*
 		OrdersDAO dao = new OrdersDAOImpl();
 		try {
-		List<Orders> list=dao.printDaySalesSelect();
-		
+		List<Orders> list=dao.printVmSalesSelect();
 		for(Orders o :list) {
 			System.out.println(o);
 		}
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }
