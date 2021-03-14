@@ -125,5 +125,35 @@ public class OrdersDAOImpl implements OrdersDAO {
 		
 		return orderList;
 	}
+
+
+	/**
+	 * 자판기별 매출 보기
+	 * */
+	@Override
+	public List<Orders> printVmSalesList() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Orders> list = new ArrayList<Orders>();
+		String sql = "select vm_no, sum(total_price), sum(qty) from orders group by vm_no";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String vmNo = rs.getString("vm_no");
+				int totalPrice = rs.getInt("total_price");
+				int qty = rs.getInt("qty");
+				
+				Orders orders = new Orders(0, 0, vmNo, qty, totalPrice, null);
+				
+				list.add(orders);
+			}
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
+		return list;
+	}
 	
 }
