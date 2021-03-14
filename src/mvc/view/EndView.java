@@ -12,7 +12,7 @@ public class EndView {
 	 * 재고확인하기
 	 * */
 	public static void printStock(List<Goods> list) {
-		System.out.println("상품개수 : "+list.size()+"\n");
+		System.out.println("\n상품개수 : "+list.size());
 		
 		System.out.println("자판기번호 | 메뉴코드 | 재고 수");
 		for(Goods goods :list) {
