@@ -42,6 +42,16 @@ public class OrdersService {
 		return list;
 	}
 	
+	/**
+	 * 주문 넣기
+	 * */
 	
+	public int ordersInsert(int menuCode, String vmNo, int qty) throws SQLException{
+		int result = ordersDao.ordersInsert(menuCode, vmNo, qty);
+		if(result == 0) {
+			throw new SQLException("주문 실패입니다.");
+		}
+		return result;
+	}
 	
 }

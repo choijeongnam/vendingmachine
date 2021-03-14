@@ -4,6 +4,7 @@ import java.util.List;
 
 import mvc.model.dto.Goods;
 import mvc.model.dto.Orders;
+import mvc.model.dto.VMGoods;
 
 public class EndView {
 
@@ -31,5 +32,21 @@ public class EndView {
 		for(Orders orders : list) {
 			System.out.println(orders);
 		}
+	}
+
+
+
+	public static void printMessage(String message) {
+		System.out.println(message);
+		
+	}
+
+
+
+	public static void printGoods(List<VMGoods> goodsList) {
+		for(VMGoods goods :goodsList) {
+			System.out.println(goods);
+		}
+		
 	}
 }

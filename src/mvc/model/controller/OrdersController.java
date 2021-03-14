@@ -33,4 +33,13 @@ public class OrdersController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
+	
+	public static void ordersInsert(int menuCode, String vmNo, int qty) {
+		try {
+			ordersService.ordersInsert(menuCode, vmNo, qty);
+			EndView.printMessage("구매되었습니다.");
+		}catch(SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
 }

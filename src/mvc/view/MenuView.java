@@ -21,7 +21,7 @@ public class MenuView {
 			menu = Integer.parseInt(sc.nextLine());
 			switch(menu) {
 			case 1:
-				
+				customerService();
 				break;
 			case 2:
 				login();
@@ -33,6 +33,12 @@ public class MenuView {
 	}
 	
 	
+	private static void customerService() {
+		
+		
+	}
+
+
 	public static void login() {
 		System.out.print("¾ÆÀÌµð: ");
 		String id = sc.nextLine();
