@@ -54,36 +54,41 @@ public class MenuView {
 	}
 	
 	public static void printSupervisorMenu(String id) {
+		while(true) {
 		SessionSet ss = SessionSet.getInstance();
 		System.out.println(ss.getSet());
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
-		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록");
+		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
-		case 1:
-			logout(id);
-			return;
-		case 2:
-
-			break;
-		case 3:
-			printStock(id);
-			break;
-		case 4:
-			printStockInsert(id);
-			break;
-		case 5:
-			OrdersController.printVmSalesSelect();
-			break;
-		case 6:
-			
-			break;
-		case 7:
-			OrdersController.printDaySalesSelect();
-			break;
-		case 8:
-			
-			break;
+			case 1:
+				logout(id);
+				return;
+			case 2:
+				
+				break;
+			case 3:
+				printStock(id);
+				break;
+			case 4:
+				printStockInsert(id);
+				break;
+			case 5:
+				OrdersController.printVmSalesSelect();
+				break;
+			case 6:
+				
+				break;
+			case 7:
+				OrdersController.printDaySalesSelect();
+				break;
+			case 8:
+				
+				break;
+			case 9:
+				deleteMenu(id);
+				break;
+			}
 		}
 	}
 	
@@ -126,7 +131,17 @@ public class MenuView {
 		System.out.print("재고를 확인할 자판기 번호: ");
 		String vmNo = sc.nextLine();
 		GoodsController.selectStock(vmNo);
-		
+	}
+	/**
+	 * 메뉴삭제
+	 * */
+	public static void deleteMenu(String svId) {
+		System.out.print("삭제할 메뉴 코드 : ");
+		int menuCode = Integer.parseInt(sc.nextLine());
+		System.out.print("자판기 번호: ");
+		String vmNo = sc.nextLine();
+		Goods goods = new Goods(menuCode, vmNo, 0);
+		GoodsController.menuOnvmDelete(goods);
 	}
 	
 }
