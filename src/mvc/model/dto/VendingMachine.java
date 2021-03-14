@@ -7,10 +7,13 @@ public class VendingMachine {
 	private String modelName;
 	private String svId;
 	
-	public VendingMachine(String vmNo, String loc, String company, String modelName, String svId) {
-		super();
+	public VendingMachine(String vmNo, String loc) {
 		this.vmNo = vmNo;
 		this.loc = loc;
+	}
+	
+	public VendingMachine(String vmNo, String loc, String company, String modelName, String svId) {
+		this(vmNo, loc);
 		this.company = company;
 		this.modelName = modelName;
 		this.svId = svId;

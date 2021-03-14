@@ -118,3 +118,5 @@ select stock from goods where menu_code = 100 and vm_no = 'A03';
 update goods set stock=stock-2 where menu_code = 100 and vm_no = 'A03';
 
 rollback
+
+select VM_NO, LOC from VM

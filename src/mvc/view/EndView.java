@@ -5,6 +5,7 @@ import java.util.List;
 import mvc.model.dto.Goods;
 import mvc.model.dto.Orders;
 import mvc.model.dto.VMGoods;
+import mvc.model.dto.VendingMachine;
 
 public class EndView {
 
@@ -44,6 +45,7 @@ public class EndView {
 
 
 	public static void printGoods(List<VMGoods> goodsList) {
+		System.out.println("       메뉴코드|   제품명   |  가격  |칼로리|재고");
 		for(VMGoods goods :goodsList) {
 			System.out.println(goods);
 		}
@@ -59,6 +61,15 @@ public class EndView {
 			System.out.print(orders.getTotalPrice()+"\t\t");
 			System.out.println(orders.getQty());
 		}
+	}
+
+
+
+	public static void printVm(List<VendingMachine> vmList) {
+		for(VendingMachine vm : vmList) {
+			System.out.println(vm.getVmNo() +"  |  "+vm.getLoc());
+		}
+		
 	}
 	
 }
