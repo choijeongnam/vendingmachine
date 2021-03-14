@@ -11,8 +11,8 @@ public class MenuView {
 	public static void menu() {
 		int menu = 0;
 		while(true) {
-			SessionSet ss = SessionSet.getInstance();
-			System.out.println(ss.getSet()); //세션 메소드 생성
+			//SessionSet ss = SessionSet.getInstance();
+			//System.out.println(ss.getSet()); //세션 메소드 생성
 			
 			MenuView.printMenu();
 			System.out.print("입력> ");
@@ -22,7 +22,7 @@ public class MenuView {
 				//제품구매
 				break;
 			case 2 : 
-				MenuView.supervisorLogin();//관리자 로그인
+				//MenuView.supervisorLogin();//관리자 로그인
 				break;
 			case 9 : 
 				System.exit(0);//프로그램 종료

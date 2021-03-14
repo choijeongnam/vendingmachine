@@ -64,24 +64,15 @@ public class StartView {
 		//GoodsController.selectStock("A01");
 		//Goods goods = new Goods(200, "A01", 0);
 		//GoodsController.menuOnvmDelete(goods);
-		/*
+		
 		OrdersDAO dao =new OrdersDAOImpl();
 		try {
 		int result =dao.ordersInsert(100, "A01", 3);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-	*/
-		/*
-		GoodsDAO dao = new GoodsDAOImpl();
-		Goods goods = new Goods(200, "A03", 0);
-		try {
-			dao.menuOnvmDelete(goods);
-		System.out.println("ªË¡¶");
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		*/
+	
+	
 	}
 
 }
