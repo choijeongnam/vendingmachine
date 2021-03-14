@@ -3,8 +3,8 @@ package mvc.view;
 import java.util.Scanner;
 
 import mvc.model.controller.GoodsController;
-import mvc.model.controller.OrdersController;
 import mvc.model.controller.SupervisorController;
+import mvc.model.dto.Goods;
 import mvc.session.Session;
 import mvc.session.SessionSet;
 
@@ -61,12 +61,10 @@ public class MenuView {
 			logout(id);
 			return;
 		case 2:
-			
+
 			break;
 		case 3:
-			System.out.print("확인할 자판기번호를 입력해주세요. > ");
-			String vmNo = sc.nextLine();
-			GoodsController.selectStock(vmNo);
+			
 			break;
 		case 4:
 			
@@ -79,7 +77,6 @@ public class MenuView {
 			break;
 		case 7:
 			
-			OrdersController.printDaySalesSelect();
 			break;
 		case 8:
 			
@@ -97,4 +94,5 @@ public class MenuView {
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);
 	}
+	
 }
