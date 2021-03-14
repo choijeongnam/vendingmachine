@@ -6,6 +6,7 @@ import java.util.List;
 
 import mvc.model.dto.Orders;
 import mvc.model.service.OrdersService;
+import mvc.view.EndView;
 import mvc.view.FailView;
 
 public class OrdersController {
@@ -18,6 +19,18 @@ public class OrdersController {
 			FailView.errorMessage(e.getMessage());
 		}catch(SQLException e1) {
 			FailView.errorMessage(e1.getMessage());
+		}
+	}
+	
+	/**
+	 * 자판기별 매출 조회
+	 * */
+	public static void printVmSalesList() {
+		try {
+			List<Orders> list = ordersService.printVmSalesSelect();
+			EndView.printVmSalesList(list);
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
 		}
 	}
 }

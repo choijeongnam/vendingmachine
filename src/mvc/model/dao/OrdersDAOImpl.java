@@ -131,7 +131,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	 * 자판기별 매출 보기
 	 * */
 	@Override
-	public List<Orders> printVmSalesList() throws SQLException {
+	public List<Orders> printVmSalesSelect() throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;

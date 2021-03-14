@@ -9,6 +9,7 @@ import java.util.List;
 import mvc.model.dao.OrdersDAO;
 import mvc.model.dao.OrdersDAOImpl;
 import mvc.model.dto.Orders;
+import mvc.model.exception.NotFoundException;
 
 public class OrdersService {
 	OrdersDAO ordersDao = new OrdersDAOImpl();
@@ -31,4 +32,16 @@ public class OrdersService {
 			e.printStackTrace(); //메세지 뭐라고 전달해야할지
 		}
 	}
+	
+	/**
+	 * 자판기별 매출 조회
+	 * */
+	public List<Orders> printVmSalesSelect() throws SQLException, NotFoundException{
+		List<Orders> list = ordersDao.printVmSalesSelect();
+		if(list.size() == 0) throw new NotFoundException("현재 자판기 매출이 없습니다.");
+		return list;
+	}
+	
+	
+	
 }
