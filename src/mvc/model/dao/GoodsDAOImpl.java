@@ -74,7 +74,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	 * 재고 보충하기
 	 * */
 	@Override
-	public int goodsInsert(Goods goods) throws SQLException {
+	public int stockInsert(Goods goods) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;

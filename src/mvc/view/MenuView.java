@@ -67,7 +67,7 @@ public class MenuView {
 			
 			break;
 		case 4:
-			
+			printStockInsert(id);
 			break;
 		case 5:
 			
@@ -94,5 +94,31 @@ public class MenuView {
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);
 	}
+	
+	/**
+	 * 재고보충
+	 * */
+	public static void printStockInsert(String svId) {
+		System.out.println("보충할 자판기 번호: ");
+		String vmNo = sc.nextLine();
+		
+		System.out.println("보충할 재고 량");
+		int stock = Integer.parseInt(sc.nextLine());
+		
+		Goods goods = new Goods(0, vmNo, stock);
+		GoodsController.stockInsert(goods);
+	}
+	
+	/**
+	 * 메뉴등록
+	 * */
+	public static void printGoodsInset(String svId) {
+		
+	}
+	
+	/**
+	 * 자판기별 매출 확인
+	 * */
+	
 	
 }
