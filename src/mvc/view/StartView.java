@@ -4,12 +4,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 import mvc.model.controller.GoodsController;
+import mvc.model.controller.OrdersController;
 import mvc.model.dao.GoodsDAO;
 import mvc.model.dao.GoodsDAOImpl;
 import mvc.model.dao.OrdersDAO;
 import mvc.model.dao.OrdersDAOImpl;
 import mvc.model.dto.Goods;
+import mvc.model.dto.Orders;
 import mvc.model.dto.VMGoods;
+import mvc.model.service.OrdersService;
 
 public class StartView {
 
@@ -19,7 +22,11 @@ public class StartView {
 		 System.out.println("-----------");
 =======
 
+<<<<<<< HEAD
 		MenuView.printMenu();
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
+=======
+		//MenuView.printMenu();
 >>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 		/*
 		 *             **00자판기 입니다**
@@ -77,7 +84,8 @@ public class StartView {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-	*/
+		*/
+
 		/*
 		GoodsDAO dao = new GoodsDAOImpl();
 		Goods goods = new Goods(200, "A03", 0);
@@ -88,6 +96,18 @@ public class StartView {
 			e.printStackTrace();
 		}
 		*/
+
+		//OrdersController.printVmSalesSelect();
+		
+		OrdersDAO dao = new OrdersDAOImpl();
+		try {
+		List<Orders> list=dao.printVmSalesSelect();
+		for(Orders o :list) {
+			System.out.println(o);
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

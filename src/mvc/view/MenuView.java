@@ -2,38 +2,64 @@ package mvc.view;
 
 import java.util.Scanner;
 
-import mvc.model.controller.GoodsController;
+import mvc.model.controller.SupervisorController;
 import mvc.session.SessionSet;
 
 public class MenuView {
 	private static Scanner sc = new Scanner(System.in);
 	
+<<<<<<< HEAD
 	public static void menu() {
+=======
+	public static void printMenu() {
+		int menu = 0;
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 		while(true) {
+
 			SessionSet ss = SessionSet.getInstance();
+<<<<<<< HEAD
 			System.out.println(ss.getSet()); //세션 메소드 생성
 			
 			MenuView.printMenu();
 			int menu = Integer.parseInt(sc.nextLine());
+=======
+			System.out.println(ss.getSet());
+
+			System.out.println("\t\t**** 샐러드 자판기 ****");
+			System.out.println("\t\t**** 항목 선택 ****");
+			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
+			System.out.print("입력> ");
+			menu = Integer.parseInt(sc.nextLine());
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 			switch(menu) {
-			case 1 : 
-				//제품구매
+			case 1:
+				customerService();
 				break;
-			case 2 : 
-				MenuView.supervisorLogin();//관리자 로그인
+			case 2:
+				login();
 				break;
-			case 9 : 
-				System.exit(0);//프로그램 종료
+			case 9:
+				System.exit(0);
 			}
 		}
 	}
 	
-	public static void printMenu() {
-		System.out.println("▶ 샐러드 자판기 ◀");
-		System.out.println("▶ 원하시는 항목을 선택해주세요 ◀");
-		System.out.println("1. 구매   |   2. 관리자 로그인   |  9. 종료");
+	
+	private static void customerService() {
+		
+		
+	}
+
+
+	public static void login() {
+		System.out.print("아이디: ");
+		String id = sc.nextLine();
+		System.out.print("비밀번호: ");
+		int password = Integer.parseInt(sc.nextLine());
+		SupervisorController.login(id, password);
 	}
 	
+<<<<<<< HEAD
 	
 	public static void printSupervisorMenu(String svId) {
 		while(true) {
@@ -72,8 +98,24 @@ public class MenuView {
 			case 9 :
 				//GoodsController.checkTotal();
 			}
+=======
+	public static void printSupervisorMenu(String id) {
+		SessionSet ss = SessionSet.getInstance();
+		System.out.println(ss.getSet());
+		System.out.println("\t\t\t----"+id+"님 로그인 중----");
+		System.out.println("1. 로그아웃  |  2. 확인  | 3. ...");
+		int menu = Integer.parseInt(sc.nextLine());
+		switch(menu) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 		}
 	}
+<<<<<<< HEAD
 	
 	/**
 	 * 관리자 로그인 메뉴
@@ -108,4 +150,6 @@ public class MenuView {
 	 * */
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 }

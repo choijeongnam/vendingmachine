@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import mvc.model.dto.Orders;
@@ -106,15 +107,79 @@ public class OrdersDAOImpl implements OrdersDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		Orders orders = null;
+		List<Orders> orderList = new ArrayList<Orders>();
 		String sql = "select * from Orders";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				orders = new Orders(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6));
+				
+				orderList.add(orders);
+			}
 		}finally {
-			
+			DBUtil.dbClose(con, ps, rs);
 		}
 		
-		return null;
+		return orderList;
+	}
+
+
+	/**
+	 * 자판기별 매출 보기
+	 * */
+	@Override
+	public List<Orders> printVmSalesSelect() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Orders> list = new ArrayList<Orders>();
+		String sql = "select vm_no, sum(total_price) as 총판매액, sum(qty) as 총판매개수 from orders group by vm_no";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String vmNo = rs.getString("vm_no");
+				int totalPrice = rs.getInt("총판매액");
+				int qty = rs.getInt("총판매개수");
+				
+				Orders orders = new Orders(0, 0, vmNo, qty, totalPrice, null);
+				
+				list.add(orders);
+			}
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
+		return list;
+	}
+
+
+	@Override
+	public List<Orders> printDaySalesSelect() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Orders> list = new ArrayList<Orders>();
+		String sql = "select sale_date, sum(total_price) 일매출, sum(qty) 총판매개수 from orders group by sale_date";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String saleDate = rs.getString("sale_date");
+				int totalPrice = rs.getInt("일매출");
+				int qty = rs.getInt("총판매개수");
+			
+				Orders orders = new Orders(0, 0, null, qty, totalPrice, saleDate);
+				list.add(orders);
+			}
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
+		return list;
 	}
 	
 }

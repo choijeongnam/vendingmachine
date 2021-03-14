@@ -10,7 +10,7 @@ public class SessionSet {
 	private Set<Session> set;
 	
 	private SessionSet() {
-		set = new HashSet<>();
+		this.set = new HashSet<>();
 	}
 	
 	public static SessionSet getInstance() {

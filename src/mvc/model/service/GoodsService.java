@@ -6,6 +6,7 @@ import java.util.List;
 import mvc.model.dao.GoodsDAO;
 import mvc.model.dao.GoodsDAOImpl;
 import mvc.model.dto.Goods;
+import mvc.model.dto.VMGoods;
 
 public class GoodsService {
 	GoodsDAO goodsDAO = new GoodsDAOImpl();
@@ -36,5 +37,16 @@ public class GoodsService {
 	public void menuOnvmDelete(Goods goods) throws SQLException{
 		int result = goodsDAO.menuOnvmDelete(goods);
 		if(result == 0) throw new SQLException("자판기의 메뉴가 삭제되지 않았습니다.");
+	}
+	
+	/**
+	 * 자판기 선택 및 제품 보여주기
+	 * */
+	public List<VMGoods> goodsSelect(String vmNo) throws SQLException{
+		List<VMGoods> goodsList = goodsDAO.goodsSelect(vmNo);
+		if(goodsList.isEmpty()) {
+			throw new SQLException("자판기에 메뉴가 없습니다.");
+		}
+		return goodsList;
 	}
 }

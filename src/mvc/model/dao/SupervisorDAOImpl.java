@@ -19,7 +19,7 @@ public class SupervisorDAOImpl implements SupervisorDAO{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Supervisor supervisor = null;
-		String sql = "select * from Supervisor where sv_id=? and password=?";
+		String sql = "select * from Supervisor where upper(sv_id)=upper(?) and password=?";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
