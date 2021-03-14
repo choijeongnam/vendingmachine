@@ -53,9 +53,9 @@ public class EndView {
 	 * */
 	public static void printDaySalesList(List<Orders> list) {
 		System.out.println("일별 매출 확인하기");
-		System.out.println("      날짜     "+"|     총 판매액     |"+"    총 판매개수");
+		System.out.println("날짜       "+"|   총 판매액   |"+"  총 판매개수");
 		for(Orders orders : list) {
-			System.out.print("  "+orders.getSaleDate()+"\t\t");
+			System.out.print(orders.getSaleDate()+"\t ");
 			System.out.print(orders.getTotalPrice()+"\t\t");
 			System.out.println(orders.getQty());
 		}

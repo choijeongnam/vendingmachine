@@ -67,10 +67,7 @@ public class MenuView {
 
 			break;
 		case 3:
-			//GoodsController.selectStock();
-			System.out.print("재고를 확인할 자판기번호 입력>");
-			String vmNo = sc.next();
-			GoodsController.selectStock(vmNo);
+			printStock(id);
 			break;
 		case 4:
 			printStockInsert(id);
@@ -125,10 +122,11 @@ public class MenuView {
 	/**
 	 * 재고확인
 	 * */
-	/*public static void printStock(String svId) {
-		System.out.println("재고를 확인할 자판기 번호: ");
+	public static void printStock(String svId) {
+		System.out.print("재고를 확인할 자판기 번호: ");
 		String vmNo = sc.nextLine();
+		GoodsController.selectStock(vmNo);
 		
-	}*/
+	}
 	
 }
