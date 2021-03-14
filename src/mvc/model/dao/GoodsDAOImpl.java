@@ -110,6 +110,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
+	/**
+	 * 메뉴 등록
+	 * */
 	@Override
 	public int goodsInsert(String vm, int menuCode) throws SQLException {
 		Connection con = null;

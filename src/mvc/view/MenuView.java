@@ -1,8 +1,11 @@
 package mvc.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import mvc.model.controller.GoodsController;
+import mvc.model.controller.OrdersController;
 import mvc.model.controller.SupervisorController;
 import mvc.model.dto.Goods;
 import mvc.session.Session;
@@ -64,19 +67,19 @@ public class MenuView {
 
 			break;
 		case 3:
-			
+			//GoodsController.selectStock();
 			break;
 		case 4:
 			printStockInsert(id);
 			break;
 		case 5:
-			
+			OrdersController.printVmSalesSelect();
 			break;
 		case 6:
 			
 			break;
 		case 7:
-			
+			OrdersController.printDaySalesSelect();
 			break;
 		case 8:
 			
@@ -102,7 +105,7 @@ public class MenuView {
 		System.out.println("보충할 자판기 번호: ");
 		String vmNo = sc.nextLine();
 		
-		System.out.println("보충할 재고 량");
+		System.out.println("보충할 재고 량: ");
 		int stock = Integer.parseInt(sc.nextLine());
 		
 		Goods goods = new Goods(0, vmNo, stock);
@@ -117,8 +120,12 @@ public class MenuView {
 	}
 	
 	/**
-	 * 자판기별 매출 확인
+	 * 재고확인
 	 * */
-	
+	/*public static void printStock(String svId) {
+		System.out.println("재고를 확인할 자판기 번호: ");
+		String vmNo = sc.nextLine();
+		
+	}*/
 	
 }
