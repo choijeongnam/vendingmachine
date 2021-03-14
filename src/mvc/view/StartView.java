@@ -91,7 +91,7 @@ public class StartView {
 		
 		OrdersDAO dao = new OrdersDAOImpl();
 		try {
-		List<Orders> list=dao.printDaySalesSelect();
+		List<Orders> list=dao.printVmSalesSelect();
 		for(Orders o :list) {
 			System.out.println(o);
 		}
