@@ -3,6 +3,7 @@ package mvc.view;
 import java.util.Scanner;
 
 import mvc.model.controller.GoodsController;
+import mvc.model.controller.OrdersController;
 import mvc.model.controller.SupervisorController;
 import mvc.model.dto.Goods;
 import mvc.session.Session;
@@ -64,7 +65,9 @@ public class MenuView {
 
 			break;
 		case 3:
-			
+			System.out.print("재고를 확인할 자판기번호 입력>");
+			String vmNo = sc.next();
+			GoodsController.selectStock(vmNo);
 			break;
 		case 4:
 			
@@ -76,7 +79,7 @@ public class MenuView {
 			
 			break;
 		case 7:
-			
+			OrdersController.printDaySalesSelect();
 			break;
 		case 8:
 			
