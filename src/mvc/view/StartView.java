@@ -84,7 +84,7 @@ public class StartView {
 			e.printStackTrace();
 		}
 		*/
-		OrdersController.printOrderList();
+		OrdersController.printVmSalesSelect();
 	}
 
 }

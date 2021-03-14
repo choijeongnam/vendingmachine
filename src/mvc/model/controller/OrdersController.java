@@ -25,7 +25,7 @@ public class OrdersController {
 	/**
 	 * 자판기별 매출 조회
 	 * */
-	public static void printVmSalesList() {
+	public static void printVmSalesSelect() {
 		try {
 			List<Orders> list = ordersService.printVmSalesSelect();
 			EndView.printVmSalesList(list);
