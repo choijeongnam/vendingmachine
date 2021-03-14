@@ -88,7 +88,7 @@ public class StartView {
 
 		//OrdersController.printVmSalesSelect();
 		
-		OrdersController.printDaySalesSelect();
+		//OrdersController.printDaySalesSelect();
 
 	}
 
