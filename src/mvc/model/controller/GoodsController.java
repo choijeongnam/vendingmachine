@@ -31,6 +31,7 @@ public class GoodsController {
 		try {
 			goodsService.stockInsert(goods);
 		}catch(Exception e) {
+			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
 	}
@@ -42,7 +43,7 @@ public class GoodsController {
 		try {
 			goodsService.menuOnvmDelete(goods);
 		}catch(Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
 	}

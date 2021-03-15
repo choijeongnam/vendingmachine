@@ -77,4 +77,17 @@ public class EndView {
 		
 	}
 	
+	/**
+	 * 자판기 정보 조회(endview)
+	 * */
+	public static void printVmById(List<VendingMachine> vmList) {
+		System.out.println("자판기 정보 조회");
+		System.out.println("자판기 번호" + " | 위치" + " | 제조사" + " | 모델명");
+		
+		for(VendingMachine vm : vmList) {
+			System.out.println(vm.getVmNo() +" | "+ vm.getLoc() +" | " + vm.getCompany() + " | " + vm.getModelName());
+		}
+		
+		
+	}
 }

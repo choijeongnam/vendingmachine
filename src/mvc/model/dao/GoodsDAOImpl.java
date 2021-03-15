@@ -80,6 +80,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, goods.getStock());
 			ps.setString(2, goods.getVmNo());
+			
 			result = ps.executeUpdate();
 		}finally {
 			DBUtil.dbClose(con, ps);

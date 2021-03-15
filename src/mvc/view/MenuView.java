@@ -25,7 +25,7 @@ public class MenuView {
 			
 			System.out.println("\t\t**** 샐러드 자판기 ****");
 			System.out.println("\t\t**** 항목 선택 ****");
-			System.out.println(" 1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
+			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
 			System.out.print("입력> ");
 			
 			menu = Integer.parseInt(sc.nextLine());
@@ -45,8 +45,11 @@ public class MenuView {
 	
 	
 	private static void customerService() {
+		
+
 
 		VMController.selectVm();
+		
 		
 	}
 
@@ -66,7 +69,6 @@ public class MenuView {
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
 		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  ");
 		System.out.println("|  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
-		System.out.print("입력> ");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
 			case 1:
@@ -115,7 +117,6 @@ public class MenuView {
 	 * 재고보충
 	 * */
 	public static void printStockInsert(String svId) {
-		try {
 		System.out.println("보충할 자판기 번호: ");
 		String vmNo = sc.nextLine();
 		
@@ -124,10 +125,6 @@ public class MenuView {
 		
 		Goods goods = new Goods(0, vmNo, stock);
 		GoodsController.stockInsert(goods);
-		}catch(NumberFormatException e) {
-			System.out.println("숫자만 입력해주세요.");
-			printStockInsert(svId);
-		}
 	}
 	
 	/**
@@ -169,29 +166,4 @@ public class MenuView {
 		
 	}
 	
-	/**
-	 * 자판기번호 입력
-	 * */
-	public static String inputVmNo() {
-		System.out.println("어느 지점 자판기에서 구매하시겠습니까?");
-		System.out.println("자판기 번호로 입력해주십시오.");
-		
-		System.out.print("입력> ");
-		String vmNo = sc.nextLine();
-
-		return vmNo;
-		
-	}
-	
-	public static void sellgoods(String vmNo) {
-		System.out.println("메뉴코드로 입력해주십시오.");
-		System.out.print("입력> ");
-		int menuCode = Integer.parseInt(sc.nextLine());
-		
-		System.out.println("수량을 입력해주십시오.");
-		System.out.print("입력> ");
-		int qty = Integer.parseInt(sc.nextLine());
-		
-		OrdersController.ordersInsert(menuCode, vmNo, qty);
-	}
 }
