@@ -115,6 +115,7 @@ public class MenuView {
 	 * 재고보충
 	 * */
 	public static void printStockInsert(String svId) {
+		try {
 		System.out.println("보충할 자판기 번호: ");
 		String vmNo = sc.nextLine();
 		
@@ -123,6 +124,10 @@ public class MenuView {
 		
 		Goods goods = new Goods(0, vmNo, stock);
 		GoodsController.stockInsert(goods);
+		}catch(NumberFormatException e) {
+			System.out.println("숫자만 입력해주세요.");
+			printStockInsert(svId);
+		}
 	}
 	
 	/**

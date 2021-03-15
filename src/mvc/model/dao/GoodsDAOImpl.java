@@ -80,11 +80,6 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, goods.getStock());
 			ps.setString(2, goods.getVmNo());
-			/*
-			if(!goods.getVmNo().equals("") {
-				throw new SQLException("자판기 번호를 다시 입력해주세요");
-			}
-			*/
 			result = ps.executeUpdate();
 		}finally {
 			DBUtil.dbClose(con, ps);

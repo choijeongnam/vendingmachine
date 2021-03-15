@@ -32,7 +32,6 @@ public class GoodsController {
 		try {
 			goodsService.stockInsert(goods);
 		}catch(Exception e) {
-			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
 	}
