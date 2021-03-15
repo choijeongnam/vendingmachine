@@ -141,9 +141,13 @@ public class MenuView {
 	 * 재고확인
 	 * */
 	public static void printStock(String svId) {
-		System.out.print("재고를 확인할 자판기 번호: ");
-		String vmNo = sc.nextLine();
-		GoodsController.selectStock(vmNo);
+		try {
+			System.out.print("재고를 확인할 자판기 번호: ");
+			String vmNo = sc.nextLine();
+			GoodsController.selectStock(vmNo);
+		}catch(NumberFormatException ne) {
+			printStock(svId);
+		}
 	}
 	/**
 	 * 메뉴삭제
