@@ -15,6 +15,7 @@ public class VMController {
 		try{
 			List<VendingMachine> vmList = vmService.selectVm();
 			EndView.printVm(vmList);
+			
 		}catch(SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}

@@ -23,7 +23,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		List<VMGoods> goodsList = new ArrayList<VMGoods>();
 		String sql = "select goods.VM_NO, goods.MENU_CODE, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock \r\n"
 				+ "from goods join menu \r\n"
-				+ "on goods.menu_code = menu.menu_code and goods.vm_no = ?";
+				+ "on goods.menu_code = menu.menu_code and upper(goods.vm_no) = upper(?)";
 		try {
 			con = DBUtil.getConnection();
 			ps  = con.prepareStatement(sql);

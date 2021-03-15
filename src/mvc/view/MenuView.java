@@ -46,15 +46,7 @@ public class MenuView {
 	
 	private static void customerService() {
 		VMController.selectVm();
-		System.out.println("어느 지점 자판기에서 구매하시겠습니까?");
-		System.out.println("자판기 번호로 입력해주십시오.");
 		
-		System.out.print("입력> ");
-		String vmNo = sc.nextLine();
-		
-		System.out.println();
-		GoodsController.goodsSelect(vmNo);
-		System.out.println();
 		
 		System.out.println("메뉴코드로 입력해주십시오.");
 		System.out.print("입력> ");
@@ -85,6 +77,7 @@ public class MenuView {
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
 		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  ");
 		System.out.println("|  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
+		System.out.print("입력> ");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
 			case 1:
@@ -169,6 +162,20 @@ public class MenuView {
 		String vmNo = sc.nextLine();
 		Goods goods = new Goods(menuCode, vmNo, 0);
 		GoodsController.menuOnvmDelete(goods);
+	}
+	
+	/**
+	 * 자판기번호 입력
+	 * */
+	public static void inputVmNo() {
+		System.out.println("어느 지점 자판기에서 구매하시겠습니까?");
+		System.out.println("자판기 번호로 입력해주십시오.");
+		
+		System.out.print("입력> ");
+		String vmNo = sc.nextLine();
+		
+		System.out.println();
+		GoodsController.goodsSelect(vmNo);
 	}
 	
 }
