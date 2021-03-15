@@ -181,5 +181,29 @@ public class OrdersDAOImpl implements OrdersDAO {
 		}
 		return list;
 	}
+
+
+	@Override
+	public List<Orders> printMenuSalesSelect() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Orders> orderLists = new ArrayList<Orders>();
+		String sql = "select m.menu_name 메뉴이름, o.total 판매액, o.qty 판매개수 \r\n"
+				+ "from (select menu_code, sum(total_price) total, sum(qty) qty from orders group by menu_code) o\r\n"
+				+ "join menu m\r\n"
+				+ "using(menu_code)";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Orders orders = new Orders(0, 0, sql, 0, 0, sql);
+			}
+		}finally {
+			
+		}
+		return null;
+	}
 	
 }
