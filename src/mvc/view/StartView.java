@@ -23,10 +23,14 @@ public class StartView {
 =======
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		MenuView.printMenu();
 >>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 =======
 		//MenuView.printMenu();
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
+=======
+		MenuView.printMenu();
 >>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 		/*
 		 *             **00자판기 입니다**
@@ -99,7 +103,7 @@ public class StartView {
 
 		//OrdersController.printVmSalesSelect();
 		
-		OrdersDAO dao = new OrdersDAOImpl();
+		/*OrdersDAO dao = new OrdersDAOImpl();
 		try {
 		List<Orders> list=dao.printVmSalesSelect();
 		for(Orders o :list) {
@@ -107,7 +111,7 @@ public class StartView {
 		}
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }
