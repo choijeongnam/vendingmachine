@@ -56,4 +56,25 @@ public class VMDAOImpl implements VMDAO{
 		}
 		return vmList;
 	}
+
+	@Override
+	public VendingMachine checkVmNo(String vmNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select vm_no from vm where upper(vm_no)= upper(?)";
+		VendingMachine vm = null;
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, vmNo);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				vm = new VendingMachine(vmNo);
+			}
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
+		return vm;
+	}
 }

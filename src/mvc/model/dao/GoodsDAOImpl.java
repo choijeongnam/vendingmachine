@@ -29,13 +29,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps  = con.prepareStatement(sql);
 			ps.setString(1, vmNo);
 			rs = ps.executeQuery();
-			String overlap = vmNo;
 			while(rs.next()) {				
-				String number = rs.getString(1);
-				if(number.equals(overlap)) {
-					number = "\t";
-				}
-				VMGoods goods = new VMGoods(number, rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
+
+				VMGoods goods = new VMGoods(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
 				
 				
 				goodsList.add(goods);

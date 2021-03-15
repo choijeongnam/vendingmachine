@@ -15,4 +15,6 @@ public interface VMDAO {
 	
 	
 	List<VendingMachine> selectVm() throws SQLException;
+	
+	VendingMachine checkVmNo(String vmNo) throws SQLException;
 }

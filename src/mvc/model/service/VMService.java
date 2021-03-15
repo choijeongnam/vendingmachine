@@ -17,4 +17,12 @@ public class VMService {
 		}
 		return vmList;
 	}
+	
+	public VendingMachine checkVmNo(String vmNo) throws SQLException{
+		VendingMachine vm = vmDAO.checkVmNo(vmNo);
+		if(vm == null) {
+			throw new SQLException("해당 자판기가 존재하지 않습니다.==> ....");
+		}
+		return vm;
+	}
 }

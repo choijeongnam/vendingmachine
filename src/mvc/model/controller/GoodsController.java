@@ -20,6 +20,7 @@ public class GoodsController {
 			List<Goods> list = goodsService.selectStock(vmNo);
 			EndView.printStock(list);
 		}catch(Exception e) {
+			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
 	}
@@ -31,6 +32,7 @@ public class GoodsController {
 		try {
 			goodsService.stockInsert(goods);
 		}catch(Exception e) {
+			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
 	}
@@ -42,6 +44,7 @@ public class GoodsController {
 		try {
 			goodsService.menuOnvmDelete(goods);
 		}catch(Exception e) {
+			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
 	}
@@ -54,6 +57,8 @@ public class GoodsController {
 			List<VMGoods> goodsList = goodsService.goodsSelect(vmNo);
 			EndView.printGoods(goodsList);
 		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("구매오류");
 			FailView.errorMessage(e.getMessage());
 		}
 	}
