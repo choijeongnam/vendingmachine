@@ -11,7 +11,7 @@ import mvc.model.dto.VendingMachine;
 import mvc.util.DBUtil;
 
 public class VMDAOImpl implements VMDAO{
-	public List<VendingMachine> selectVmByVmId (String vmId) throws SQLException {
+	public List<VendingMachine> selectVmBySvId (String svId) throws SQLException {
 			Connection con=null;
 			PreparedStatement ps=null;
 		  ResultSet rs=null;
@@ -19,7 +19,7 @@ public class VMDAOImpl implements VMDAO{
 		 try {
 		   con = DBUtil.getConnection();
 		   ps= con.prepareStatement("select * from orders where vm_id=?");
-		   ps.setString(1, vmId);
+		   ps.setString(1, svId);
 	       rs = ps.executeQuery(); 
 	        
 	        while(rs.next()) {

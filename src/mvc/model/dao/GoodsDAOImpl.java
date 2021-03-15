@@ -11,7 +11,6 @@ import java.util.List;
 import mvc.model.dto.Goods;
 import mvc.model.dto.Menu;
 import mvc.model.dto.VMGoods;
-import mvc.model.dto.VendingMachine;
 import mvc.util.DBUtil;
 
 public class GoodsDAOImpl implements GoodsDAO {
@@ -81,10 +80,6 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, goods.getStock());
 			ps.setString(2, goods.getVmNo());
-			
-			/*if(goods.getVmNo().equals("a01")==false) {
-				throw new SQLException("해당 자판기가 존재하지 않습니다.");
-			}*/
 			
 			result = ps.executeUpdate();
 		}finally {
