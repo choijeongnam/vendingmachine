@@ -1,30 +1,36 @@
 package mvc.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import mvc.model.controller.GoodsController;
+import mvc.model.controller.OrdersController;
 import mvc.model.controller.SupervisorController;
+import mvc.model.controller.VMController;
+import mvc.model.dto.Goods;
+import mvc.model.service.VMService;
 import mvc.session.Session;
 import mvc.session.SessionSet;
 
 public class MenuView {
 	private static Scanner sc = new Scanner(System.in);
 	
-<<<<<<< HEAD
-	public static void menu() {
-=======
+
+	
+
 	public static void printMenu() {
 		int menu = 0;
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
+
 		while(true) {
 
 			SessionSet ss = SessionSet.getInstance();
-<<<<<<< HEAD
+
 			System.out.println(ss.getSet()); //세션 메소드 생성
 			
 			MenuView.printMenu();
-			int menu = Integer.parseInt(sc.nextLine());
-=======
+			menu = Integer.parseInt(sc.nextLine());
+
 			System.out.println(ss.getSet());
 
 			System.out.println("\t\t**** 샐러드 자판기 ****");
@@ -32,7 +38,7 @@ public class MenuView {
 			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
 			System.out.print("입력> ");
 			menu = Integer.parseInt(sc.nextLine());
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
+
 			switch(menu) {
 			case 1:
 				customerService();
@@ -48,6 +54,27 @@ public class MenuView {
 	
 	
 	private static void customerService() {
+		VMController.selectVm();
+		System.out.println("어느 지점 자판기에서 구매하시겠습니까?");
+		System.out.println("자판기 번호로 입력해주십시오.");
+		
+		System.out.print("입력> ");
+		String vmNo = sc.nextLine();
+		
+		System.out.println();
+		GoodsController.goodsSelect(vmNo);
+		System.out.println();
+		
+		System.out.println("메뉴코드로 입력해주십시오.");
+		System.out.print("입력> ");
+		int menuCode = Integer.parseInt(sc.nextLine());
+		
+		System.out.println("수량을 입력해주십시오.");
+		System.out.print("입력> ");
+		int qty = Integer.parseInt(sc.nextLine());
+		
+		OrdersController.ordersInsert(menuCode, vmNo, qty);
+		System.out.println();
 		
 	}
 
@@ -60,119 +87,51 @@ public class MenuView {
 		SupervisorController.login(id, password);
 	}
 	
-<<<<<<< HEAD
+
 	
-	public static void printSupervisorMenu(String svId) {
-		while(true) {
-			SessionSet ss = SessionSet.getInstance();
-			System.out.println(ss.getSet()); //Set객체
-			System.out.println("-----" +svId+ " 로그인 중 -----");
-			System.out.println(" 1.재고확인 |  2.재고 보충  |  3.자판기별 매출 확인  | 4.제품별 매출 확인  |  5.일 별 매출 확인 |  6.상품 등록 | "
-					+ "7.상품 삭제 | 8. 상품 정보수정 | 9. 총 판매내역보기 ");
-			int menu =Integer.parseInt( sc.nextLine());
-			switch(menu) {
-			case 1 : 
-				GoodsController.selectStock(svId);
-				break;
-			case 2 : 
-				GoodsController.goodsInsert(null);
-				break;
-			case 3 :
-				//GoodsController.check???();
-				
-			case 4 :
-				//GoodsController.check???();
-				
-			case 5 : 
-				//GoodsController.check???();
-				
-			case 6 : 
-				//GoodsController.menuInsert();
-				
-			case 7 : 
-				GoodsController.menuOnvmDelete(null);
-				break;
-				
-			case 8 :
-				//GoodsController.menuUpdate();
-				
-			case 9 :
-				//GoodsController.checkTotal();
-			}
-=======
+
 	public static void printSupervisorMenu(String id) {
+		while(true) {
 		SessionSet ss = SessionSet.getInstance();
 		System.out.println(ss.getSet());
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
-		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록");
+		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
-		case 1:
-			logout(id);
-			return;
-		case 2:
-			
-			break;
-		case 3:
-			
-			break;
-		case 4:
-			
-			break;
-		case 5:
-			
-			break;
-		case 6:
-			
-			break;
-		case 7:
-			
-			break;
-		case 8:
-			
-			break;
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
+
+			case 1:
+				logout(id);
+				return;
+			case 2:
+				
+				break;
+			case 3:
+				printStock(id);
+				break;
+			case 4:
+				printStockInsert(id);
+				break;
+			case 5:
+				OrdersController.printVmSalesSelect();
+				break;
+			case 6:
+				
+				break;
+			case 7:
+				OrdersController.printDaySalesSelect();
+				break;
+			case 8:
+				
+				break;
+			case 9:
+				deleteMenu(id);
+				break;
+			}
+
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	
-	/**
-	 * 관리자 로그인 메뉴
-	 * */
-	public static void supervisorLogin() {
-		System.out.println("관리자 아이디 : ");
-		String svId = sc.nextLine();
-		
-		System.out.println("관리자 비밀번호 : ");
-		String svPassword = sc.nextLine();
-		
-		//SupervisorController.login(svId, svPassword);
-	}
-	
-	/**
-	 * 자판기별 매출
-	 * */
-	
-	
-	/**
-	 * 제품별 매출
-	 * */
-	
-	
-	/**
-	 * 일별 매출
-	 * */
-	
-	
-	/**
-	 * 총 매출
-	 * */
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
-=======
 	
 	
 	/**
@@ -184,5 +143,48 @@ public class MenuView {
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);
 	}
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
+
+	
+	/**
+	 * 재고보충
+	 * */
+	public static void printStockInsert(String svId) {
+		System.out.println("보충할 자판기 번호: ");
+		String vmNo = sc.nextLine();
+		
+		System.out.println("보충할 재고 량: ");
+		int stock = Integer.parseInt(sc.nextLine());
+		
+		Goods goods = new Goods(0, vmNo, stock);
+		GoodsController.stockInsert(goods);
+	}
+	
+	/**
+	 * 메뉴등록
+	 * */
+	public static void printGoodsInset(String svId) {
+		
+	}
+	
+	/**
+	 * 재고확인
+	 * */
+	public static void printStock(String svId) {
+		System.out.print("재고를 확인할 자판기 번호: ");
+		String vmNo = sc.nextLine();
+		GoodsController.selectStock(vmNo);
+	}
+	/**
+	 * 메뉴삭제
+	 * */
+	public static void deleteMenu(String svId) {
+		System.out.print("삭제할 메뉴 코드 : ");
+		int menuCode = Integer.parseInt(sc.nextLine());
+		System.out.print("자판기 번호: ");
+		String vmNo = sc.nextLine();
+		Goods goods = new Goods(menuCode, vmNo, 0);
+		GoodsController.menuOnvmDelete(goods);
+	}
+	
+
 }

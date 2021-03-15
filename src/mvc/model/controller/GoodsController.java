@@ -27,9 +27,9 @@ public class GoodsController {
 	/**
 	 * 재고 보충
 	 * */
-	public static void goodsInsert(Goods goods) {
+	public static void stockInsert(Goods goods) {
 		try {
-			goodsService.goodsInsert(goods);
+			goodsService.stockInsert(goods);
 		}catch(Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}

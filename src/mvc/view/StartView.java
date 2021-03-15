@@ -103,7 +103,11 @@ public class StartView {
 
 		//OrdersController.printVmSalesSelect();
 		
-		/*OrdersDAO dao = new OrdersDAOImpl();
+
+
+		//OrdersController.printDaySalesSelect();
+/*
+		OrdersDAO dao = new OrdersDAOImpl();
 		try {
 		List<Orders> list=dao.printVmSalesSelect();
 		for(Orders o :list) {

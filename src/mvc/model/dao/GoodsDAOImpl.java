@@ -21,7 +21,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<VMGoods> goodsList = new ArrayList<VMGoods>();
-		String sql = "select goods.VM_NO, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock \r\n"
+		String sql = "select goods.VM_NO, goods.MENU_CODE, menu.MENU_NAME, menu.PRICE, menu.kcal, goods.stock \r\n"
 				+ "from goods join menu \r\n"
 				+ "on goods.menu_code = menu.menu_code and goods.vm_no = ?";
 		try {
@@ -35,7 +35,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 				if(number.equals(overlap)) {
 					number = "\t";
 				}
-				VMGoods goods = new VMGoods(number, rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+				VMGoods goods = new VMGoods(number, rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
 				
 				
 				goodsList.add(goods);
@@ -74,7 +74,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	 * 재고 보충하기
 	 * */
 	@Override
-	public int goodsInsert(Goods goods) throws SQLException {
+	public int stockInsert(Goods goods) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -110,6 +110,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
+	/**
+	 * 메뉴 등록
+	 * */
 	@Override
 	public int goodsInsert(String vm, int menuCode) throws SQLException {
 		Connection con = null;
@@ -168,7 +171,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps.setString(2, vmNo);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				good = new VMGoods(null, null, 0, 0, rs.getInt(1));
+				good = new VMGoods(null, 0, null, 0, 0, rs.getInt(1));
 			}
 		}finally {
 			DBUtil.dbClose(null, ps, rs);

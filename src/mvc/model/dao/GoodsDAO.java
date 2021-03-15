@@ -30,7 +30,7 @@ public interface GoodsDAO {
 	 * 굿즈테이블에서만 업데이트 해주면 됩니다.
 	 * update goods set stock = stock+? where vm_no = ?
 	 * */
-	int goodsInsert(Goods goods)throws SQLException;
+	int stockInsert(Goods goods)throws SQLException;
 
 	/** 
 	 * 우수현
