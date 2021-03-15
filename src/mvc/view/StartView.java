@@ -17,21 +17,10 @@ import mvc.model.service.OrdersService;
 public class StartView {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		 MenuView.menu();
-		 System.out.println("-----------");
-=======
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-		MenuView.printMenu();
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
-=======
-		//MenuView.printMenu();
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
-=======
-		MenuView.printMenu();
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
+		 MenuView.printMenu();
+		 System.out.println("-----------");
+
 		/*
 		 *             **00자판기 입니다**
 		 * 				메뉴를 선택해주세요
