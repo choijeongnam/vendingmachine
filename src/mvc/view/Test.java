@@ -8,5 +8,7 @@ import mvc.model.dao.GoodsDAOImpl;
 import mvc.model.dto.Goods;
 
 public class Test {
-
+	public void aa() {
+		System.out.println("충돌 수정");
+	}
 }

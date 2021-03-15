@@ -45,7 +45,7 @@ public class GoodsService {
 	public List<VMGoods> goodsSelect(String vmNo) throws SQLException{
 		List<VMGoods> goodsList = goodsDAO.goodsSelect(vmNo);
 		if(goodsList.isEmpty()) {
-			throw new SQLException("자판기에 메뉴가 없습니다.");
+			throw new SQLException("해당 자판기가 존재하지 않습니다.");
 		}
 		return goodsList;
 	}
