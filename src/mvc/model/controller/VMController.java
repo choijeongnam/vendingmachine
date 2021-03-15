@@ -37,4 +37,16 @@ public class VMController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
+	
+	/**
+	 * 자판기 정보 조회(VMController)
+	 * */
+	public static void selectVmSvId(String svId) {
+		try {
+			List<VendingMachine> vmList = vmService.selectVmBySvId(null);
+			EndView.printVmById(vmList);
+		}catch(SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
 }
