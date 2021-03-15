@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import mvc.model.dto.Menu;
 import mvc.model.dto.Orders;
 import mvc.model.dto.VMGoods;
 import mvc.util.DBUtil;
@@ -188,7 +189,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<Orders> orderLists = new ArrayList<Orders>();
+		List<Orders> ordersList = new ArrayList<Orders>();
 		String sql = "select m.menu_name 메뉴이름, o.total 판매액, o.qty 판매개수 \r\n"
 				+ "from (select menu_code, sum(total_price) total, sum(qty) qty from orders group by menu_code) o\r\n"
 				+ "join menu m\r\n"
@@ -198,12 +199,14 @@ public class OrdersDAOImpl implements OrdersDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Orders orders = new Orders(0, 0, sql, 0, 0, sql);
+				Orders orders = new Orders(0, rs.getInt(1), null, rs.getInt(2), rs.getInt(3), null);
+				
+				ordersList.add(orders);
 			}
 		}finally {
 			
 		}
-		return null;
+		return ordersList;
 	}
 	
 }

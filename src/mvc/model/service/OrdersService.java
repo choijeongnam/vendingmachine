@@ -66,4 +66,12 @@ public class OrdersService {
 		return result;
 	}
 	
+	public List<Orders> printMenuSalesSelect() throws SQLException{
+		List<Orders> list = ordersDao.printMenuSalesSelect();
+		if(list.isEmpty()) {
+			throw new SQLException("판매 내역이 없습니다.");
+		}
+		return list;
+	}
+	
 }

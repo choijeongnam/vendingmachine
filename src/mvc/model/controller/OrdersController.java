@@ -55,4 +55,16 @@ public class OrdersController {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 메뉴별 매출 조회
+	 * */
+	public static void printMenuSalesSelect() {
+		try {
+			List<Orders> list = ordersService.printMenuSalesSelect();
+			EndView.printMenuSalesList(list);
+		}catch(SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
 }

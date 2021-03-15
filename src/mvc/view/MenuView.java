@@ -87,7 +87,7 @@ public class MenuView {
 				OrdersController.printVmSalesSelect();
 				break;
 			case 6:
-				
+				OrdersController.printMenuSalesSelect();
 				break;
 			case 7:
 				OrdersController.printDaySalesSelect();

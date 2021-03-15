@@ -7,7 +7,16 @@ public class Orders {
 	private int qty;
 	private int totalPrice;
 	private String saleDate;
+	private Menu menu;
 	
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
 	public Orders(int orderSeq, int menuCode, String vmNo, int qty, int totalPrice, String saleDate) {
 		super();
 		this.orderSeq = orderSeq;

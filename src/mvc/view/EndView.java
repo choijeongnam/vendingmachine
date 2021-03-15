@@ -90,4 +90,13 @@ public class EndView {
 		
 		
 	}
+
+
+
+	public static void printMenuSalesList(List<Orders> ordersList) {
+		for(Orders orders : ordersList) {
+			System.out.println(orders.getMenuCode() +" | " + orders.getTotalPrice() + " | " + orders.getQty());
+		}
+		
+	}
 }
