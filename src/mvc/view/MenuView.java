@@ -16,21 +16,11 @@ import mvc.session.SessionSet;
 public class MenuView {
 	private static Scanner sc = new Scanner(System.in);
 	
-
-	
-
 	public static void printMenu() {
 		int menu = 0;
-
 		while(true) {
 
 			SessionSet ss = SessionSet.getInstance();
-
-			System.out.println(ss.getSet()); //세션 메소드 생성
-			
-			
-			menu = Integer.parseInt(sc.nextLine());
-
 			System.out.println(ss.getSet());
 
 			System.out.println("\t\t**** 샐러드 자판기 ****");
@@ -38,7 +28,6 @@ public class MenuView {
 			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
 			System.out.print("입력> ");
 			menu = Integer.parseInt(sc.nextLine());
-
 			switch(menu) {
 			case 1:
 				customerService();
@@ -87,9 +76,6 @@ public class MenuView {
 		SupervisorController.login(id, password);
 	}
 	
-
-	
-
 	public static void printSupervisorMenu(String id) {
 		while(true) {
 		SessionSet ss = SessionSet.getInstance();
@@ -98,7 +84,6 @@ public class MenuView {
 		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
-
 			case 1:
 				logout(id);
 				return;
@@ -127,11 +112,8 @@ public class MenuView {
 				deleteMenu(id);
 				break;
 			}
-
 		}
 	}
-
-	
 	
 	
 	/**
@@ -143,7 +125,6 @@ public class MenuView {
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);
 	}
-
 	
 	/**
 	 * 재고보충
@@ -186,5 +167,4 @@ public class MenuView {
 		GoodsController.menuOnvmDelete(goods);
 	}
 	
-
 }

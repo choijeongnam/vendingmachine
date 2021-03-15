@@ -12,8 +12,8 @@ import mvc.util.DBUtil;
 
 public class VMDAOImpl implements VMDAO{
 	public List<VendingMachine> selectVmByVmId (String vmId) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+			Connection con=null;
+			PreparedStatement ps=null;
 		  ResultSet rs=null;
 		  List<VendingMachine> list = new ArrayList<VendingMachine>();
 		 try {
@@ -34,7 +34,6 @@ public class VMDAOImpl implements VMDAO{
 		return list;
 	}
 
-	
 	@Override
 	public List<VendingMachine> selectVm() throws SQLException {
 		Connection con = null;
