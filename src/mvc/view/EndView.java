@@ -30,8 +30,12 @@ public class EndView {
 	 * 자판기별 매출 조회
 	 * */
 	public static void printVmSalesList(List<Orders> list) {
+		System.out.println("자판기별 매출 확인하기");
+		System.out.println("자판기번호   "+"|   총 판매액   |"+"   총 판매개수");
 		for(Orders orders : list) {
-			System.out.println(orders);
+			System.out.print(orders.getVmNo() + "\t\t    ");
+			System.out.print(orders.getTotalPrice() + "             ");
+			System.out.println(orders.getQty());
 		}
 	}
 
