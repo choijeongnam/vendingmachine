@@ -18,7 +18,9 @@ public class StartView {
 
 	public static void main(String[] args) {
 
-		MenuView.printMenu();
+		 MenuView.printMenu();
+		 System.out.println("-----------");
+
 		/*
 		 *             **00자판기 입니다**
 		 * 				메뉴를 선택해주세요
@@ -50,7 +52,8 @@ public class StartView {
 		 *				제대로 입력 시
 		 *				로그인되었습니다.
 		 *
-		 *				1. 재고 보기 2. 재고 보충하기 
+		 *				1. 재고 보기 
+		 *  			2. 재고 보충하기 
 		 *				3. 자판기별매출보기(여태까지 해당 자판기에서 팔렸던 총 제품과 해당 자판기 매출액)
 		 *				4. 제품별매출보기(여태까지 그 제품수량 몇개 팔렷고 총 매출액)
 		 *				5. 일매출보기(전체 sysdate 그 날짜에 해당하는 판매기록을 콘솔로)

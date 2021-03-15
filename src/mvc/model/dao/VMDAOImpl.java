@@ -34,6 +34,7 @@ public class VMDAOImpl implements VMDAO{
 		return list;
 	}
 
+	
 	@Override
 	public List<VendingMachine> selectVm() throws SQLException {
 		Connection con = null;
