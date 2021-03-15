@@ -38,4 +38,5 @@ public interface OrdersDAO {
 	 *	join menu m
 	 *	using(menu_code);
 	 * */
+	List<Orders> printMenuSalesSelect() throws SQLException;
 }

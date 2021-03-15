@@ -29,7 +29,7 @@ public class OrdersService {
 			bw.flush();
 			bw.close();
 		}catch(IOException e) {
-			e.printStackTrace(); //메세지 뭐라고 전달해야할지
+			throw new IOException("주문내역서를 뽑지 못했습니다.");
 		}
 	}
 	
