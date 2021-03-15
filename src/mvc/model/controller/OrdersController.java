@@ -15,6 +15,7 @@ public class OrdersController {
 	public static void printOrderList() {
 		try {
 		ordersService.printOrderList();
+		EndView.printMessage("출력되었습니다.");
 		}catch(IOException e) {
 			FailView.errorMessage(e.getMessage());
 		}catch(SQLException e1) {

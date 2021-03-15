@@ -19,7 +19,6 @@ public class StartView {
 	public static void main(String[] args) {
 
 		 MenuView.printMenu();
-		 System.out.println("-----------");
 
 		/*
 		 *             **00자판기 입니다**

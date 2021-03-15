@@ -19,6 +19,9 @@ public class OrdersService {
 			List<Orders> orderList = ordersDao.printOrderList();
 			bw.write("\t\t\t==== 주문내역서 ====");
 			bw.write("\r\n");
+			bw.write("=================================================");
+			bw.write("\r\n");
+			bw.write("주문번호|메뉴코드|자판기번호|수량|총가격|판매날짜");
 			bw.write("\r\n");
 			
 			for(Orders orders : orderList) {
@@ -26,6 +29,7 @@ public class OrdersService {
 				bw.write("\t"+print);
 				bw.write("\r\n"); 
 			}
+			bw.write("=================================================");
 			bw.flush();
 			bw.close();
 		}catch(IOException e) {
