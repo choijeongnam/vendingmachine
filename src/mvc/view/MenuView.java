@@ -146,6 +146,7 @@ public class MenuView {
 			printStock(svId);
 		}
 	}
+	
 	/**
 	 * 메뉴삭제
 	 * */
