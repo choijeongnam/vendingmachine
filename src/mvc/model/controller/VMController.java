@@ -19,7 +19,7 @@ public class VMController {
 			EndView.printVm(vmList);		
 			String checkVmNo = MenuView.inputVmNo();
 			VendingMachine vm = vmService.checkVmNo(checkVmNo);
-
+			System.out.println();
 			GoodsController.goodsSelect(checkVmNo);
 			MenuView.sellgoods(checkVmNo);
 		}catch(SQLException e) {

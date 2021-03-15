@@ -25,7 +25,7 @@ public class MenuView {
 			
 			System.out.println("\t\t**** 샐러드 자판기 ****");
 			System.out.println("\t\t**** 항목 선택 ****");
-			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
+			System.out.println(" 1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
 			System.out.print("입력> ");
 			
 			menu = Integer.parseInt(sc.nextLine());
