@@ -7,8 +7,12 @@ public class VendingMachine {
 	private String modelName;
 	private String svId;
 	
-	public VendingMachine(String vmNo, String loc) {
+	public VendingMachine(String vmNo) {
 		this.vmNo = vmNo;
+	}
+	
+	public VendingMachine(String vmNo, String loc) {
+		this(vmNo);
 		this.loc = loc;
 	}
 	
