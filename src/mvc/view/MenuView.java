@@ -103,7 +103,7 @@ public class MenuView {
 				logout(id);
 				return;
 			case 2:
-				
+				OrdersController.printOrderList();
 				break;
 			case 3:
 				printStock(id);
