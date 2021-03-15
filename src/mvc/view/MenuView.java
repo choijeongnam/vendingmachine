@@ -21,8 +21,8 @@ public class MenuView {
 		while(true) {
 
 			SessionSet ss = SessionSet.getInstance();
-			System.out.println(ss.getSet());
-
+			System.out.println(ss.getSet()); //세션 메소드 생성
+			
 			System.out.println("\t\t**** 샐러드 자판기 ****");
 			System.out.println("\t\t**** 항목 선택 ****");
 			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
@@ -155,13 +155,20 @@ public class MenuView {
 	 * 메뉴삭제
 	 * */
 	public static void deleteMenu(String svId) {
+		
+		try {
 		System.out.print("삭제할 메뉴 코드 : ");
 		int menuCode = Integer.parseInt(sc.nextLine());
-		
 		System.out.print("자판기 번호: ");
 		String vmNo = sc.nextLine();
 		Goods goods = new Goods(menuCode, vmNo, 0);
 		GoodsController.menuOnvmDelete(goods);
+		}catch(NumberFormatException e) {
+			System.out.println("메뉴코드는 숫자만 입력하세요");
+			
+			deleteMenu(svId);
+		}
+		
 	}
 	
 	/**
