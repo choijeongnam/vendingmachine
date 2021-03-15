@@ -45,7 +45,7 @@ public class EndView {
 
 
 	public static void printGoods(List<VMGoods> goodsList) {
-		System.out.println("       메뉴코드|   제품명   |  가격  |칼로리|재고");
+		System.out.println("       메뉴코드|   제품명   | 가격 |칼로리|재고");
 		for(VMGoods goods :goodsList) {
 			System.out.println(goods);
 		}
