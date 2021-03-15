@@ -37,6 +37,7 @@ public class GoodsService {
 	public void menuOnvmDelete(Goods goods) throws SQLException{
 		int result = goodsDAO.menuOnvmDelete(goods);
 		if(result == 0) throw new SQLException("자판기의 메뉴가 삭제되지 않았습니다.\n메뉴코드나 자판기번호를 확인해주세요.");
+		
 	}
 	
 	/**
@@ -46,6 +47,7 @@ public class GoodsService {
 		List<VMGoods> goodsList = goodsDAO.goodsSelect(vmNo);
 		if(goodsList.isEmpty()) {
 			throw new SQLException("해당 자판기가 존재하지 않습니다.");
+			
 		}
 		return goodsList;
 	}
