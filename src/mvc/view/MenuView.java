@@ -46,28 +46,9 @@ public class MenuView {
 	
 	private static void customerService() {
 		
+
+
 		VMController.selectVm();
-		System.out.println("어느 지점 자판기에서 구매하시겠습니까?");
-		System.out.println("자판기 번호로 입력해주십시오.");
-		
-		System.out.print("입력> ");
-		String vmNo = sc.nextLine();
-		
-		System.out.println();
-		GoodsController.goodsSelect(vmNo);
-		System.out.println();
-	
-		System.out.println("메뉴코드로 입력해주십시오.");
-		System.out.print("입력> ");
-		int menuCode = Integer.parseInt(sc.nextLine());
-		
-		System.out.println("수량을 입력해주십시오.");
-		System.out.print("입력> ");
-		int qty = Integer.parseInt(sc.nextLine());
-		
-		OrdersController.ordersInsert(menuCode, vmNo, qty);
-		System.out.println();
-		
 		
 		
 	}
