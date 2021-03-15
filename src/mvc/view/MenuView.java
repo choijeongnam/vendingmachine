@@ -172,6 +172,7 @@ public class MenuView {
 		GoodsController.menuOnvmDelete(goods);
 		}catch(NumberFormatException e) {
 			System.out.println("메뉴코드는 숫자만 입력하세요");
+			
 			deleteMenu(svId);
 		}
 		
