@@ -83,7 +83,8 @@ public class MenuView {
 		SessionSet ss = SessionSet.getInstance();
 		System.out.println(ss.getSet());
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
-		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
+		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  ");
+		System.out.println("|  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
 			case 1:
