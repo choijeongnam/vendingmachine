@@ -28,7 +28,7 @@ public class MenuView {
 
 			System.out.println(ss.getSet()); //技记 皋家靛 积己
 			
-			MenuView.printMenu();
+			
 			menu = Integer.parseInt(sc.nextLine());
 
 			System.out.println(ss.getSet());
