@@ -63,6 +63,7 @@ public class MenuView {
 		int qty = Integer.parseInt(sc.nextLine());
 		
 		OrdersController.ordersInsert(menuCode, vmNo, qty);
+		System.out.println();
 		
 	}
 
