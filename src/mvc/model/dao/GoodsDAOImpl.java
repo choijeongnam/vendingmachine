@@ -98,7 +98,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	}
 
 	@Override
-	public int menuOnvmDelete(Goods goods) throws SQLException {
+	public int menuOnvmDelete(Goods goods) throws SQLException, NumberFormatException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -108,6 +108,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, goods.getMenuCode());
 			ps.setString(2, goods.getVmNo());
+			/*if() {
+			throw new NumberFormatException("메뉴코드를 확인해주세요.");
+			}*/
 			result = ps.executeUpdate();
 		}finally {
 			DBUtil.dbClose(con, ps);
