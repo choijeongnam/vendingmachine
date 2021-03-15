@@ -27,6 +27,7 @@ public class MenuView {
 			System.out.println("\t\t**** 항목 선택 ****");
 			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
 			System.out.print("입력> ");
+			
 			menu = Integer.parseInt(sc.nextLine());
 			
 			switch(menu) {
@@ -82,7 +83,8 @@ public class MenuView {
 		SessionSet ss = SessionSet.getInstance();
 		System.out.println(ss.getSet());
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
-		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
+		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  ");
+		System.out.println("|  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
 			case 1:
@@ -162,6 +164,7 @@ public class MenuView {
 	public static void deleteMenu(String svId) {
 		System.out.print("삭제할 메뉴 코드 : ");
 		int menuCode = Integer.parseInt(sc.nextLine());
+		
 		System.out.print("자판기 번호: ");
 		String vmNo = sc.nextLine();
 		Goods goods = new Goods(menuCode, vmNo, 0);
