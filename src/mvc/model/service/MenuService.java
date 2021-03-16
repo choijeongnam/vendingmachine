@@ -17,4 +17,16 @@ public class MenuService {
 		}
 		return menuList;
 	}
+	
+	
+	/**
+	 * 관리자가 메뉴 확인하기
+	 * */
+	public List<Menu> menuSelect() throws SQLException{
+		List<Menu> list = menuDAO.menuSelect();
+		if(list.size() == 0) {
+			throw new SQLException("메뉴가 없습니다.");
+		}
+		return list;
+	}
 }

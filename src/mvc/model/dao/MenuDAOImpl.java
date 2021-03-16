@@ -41,4 +41,30 @@ public class MenuDAOImpl implements MenuDAO {
 		return menuList;
 	}
 
+	
+	/**
+	 * 관리자가 메뉴 확인하기
+	 * */
+	@Override
+	public List<Menu> menuSelect() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Menu> list = new ArrayList<Menu>();
+		String sql = "select menu_code, menu_name, price, kcal from menu";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Menu menu = new Menu(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
+				list.add(menu);
+			}
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
+		return list;
+	}
+
 }
