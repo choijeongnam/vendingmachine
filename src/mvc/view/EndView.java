@@ -116,9 +116,9 @@ public class EndView {
 	 * */
 	public static void printMenuSalesList(List<Menu> menuList) {
 		System.out.println("제품별 매출 확인하기");
-		System.out.println("메뉴이름 | 총 판매액 | 총 판매개수");
+		System.out.println("   메뉴이름 | 판매액 | 판매개수");
 		for(Menu menu : menuList) {
-			System.out.println(menu.getMenuCode() +" | " + menu.getOrders().getTotalPrice() + " | " + menu.getOrders().getQty());
+			System.out.println("  "+menu.getMenuName() +"  " + menu.getOrders().getTotalPrice() + "     " + menu.getOrders().getQty());
 		}
 		
 	}
