@@ -146,8 +146,8 @@ public class EndView {
 		System.out.println("메뉴 확인하기");
 		System.out.println("메뉴번호  |  메뉴이름  |  가격  |  칼로리");
 		for(Menu menu : list) {
-			System.out.print(menu.getMenuCode() + "\t      ");
-			System.out.print(menu.getMenuName() + "\t");
+			System.out.print(menu.getMenuCode() + "\t        ");
+			System.out.print(menu.getMenuName() + "   ");
 			System.out.print(menu.getPrice() + "\t");
 			System.out.println(menu.getKcal());
 		}
