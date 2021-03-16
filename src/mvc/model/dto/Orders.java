@@ -77,8 +77,8 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return orderSeq + "     " + menuCode + "         " + vmNo + "      " + qty
-				+ "  " + totalPrice + "   " + saleDate;
+		return orderSeq + "     " + menuCode + "       " + vmNo + "       " + qty
+				+ "   " + totalPrice + "  " + saleDate;
 	}
 	
 	
