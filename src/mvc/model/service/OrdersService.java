@@ -14,6 +14,9 @@ import mvc.model.exception.NotFoundException;
 public class OrdersService {
 	OrdersDAO ordersDao = new OrdersDAOImpl();
 	
+	/**
+	 * 관리자가 주문내역 보기
+	 * */
 	public void printOrderList() throws SQLException, IOException{
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/mvc/view/주문내역서.txt"))){
 			List<Orders> orderList = ordersDao.printOrderList();
@@ -37,6 +40,7 @@ public class OrdersService {
 		}
 	}
 	
+	
 	/**
 	 * 자판기별 매출 조회
 	 * */
@@ -46,9 +50,7 @@ public class OrdersService {
 		return list;
 	}
 	
-	/**
-	 * 주문 넣기
-	 */
+	
 	/**
 	 * 일별 매출 조회
 	 * */
@@ -58,6 +60,10 @@ public class OrdersService {
 		return list;
 	}
 	
+	
+	/**
+	 * 자판기 상품 구매하기
+	 * */
 	public int ordersInsert(int menuCode, String vmNo, int qty) throws SQLException{
 		int result = ordersDao.ordersInsert(menuCode, vmNo, qty);
 		if(result == 0) {
@@ -66,6 +72,10 @@ public class OrdersService {
 		return result;
 	}
 	
+		
+	/**
+	 * 상품별 매출 보기
+	 * */
 	public List<Orders> printMenuSalesSelect() throws SQLException{
 		List<Orders> list = ordersDao.printMenuSalesSelect();
 		if(list.isEmpty()) {
