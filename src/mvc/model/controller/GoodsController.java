@@ -33,7 +33,6 @@ public class GoodsController {
 			EndView.printMessage("재고가 보충되었습니다!");
 			System.out.println();
 		}catch(Exception e) {
-			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 		}
 	}
@@ -44,6 +43,7 @@ public class GoodsController {
 	public static void menuOnvmDelete(Goods goods) {
 		try {
 			goodsService.menuOnvmDelete(goods);
+			EndView.printMessage("해당 자판기에서 메뉴 삭제되었습니다!");
 		}catch(Exception e) {
 			//e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
@@ -58,7 +58,6 @@ public class GoodsController {
 			List<VMGoods> goodsList = goodsService.goodsSelect(vmNo);
 			EndView.printGoods(goodsList);
 		}catch(SQLException e) {
-			e.printStackTrace();
 			System.out.println("구매오류");
 			FailView.errorMessage(e.getMessage());
 		}
