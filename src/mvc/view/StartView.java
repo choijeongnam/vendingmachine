@@ -104,7 +104,16 @@ public class StartView {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}*/
-		
+		/*
+		OrdersDAO dao = new OrdersDAOImpl();
+		try {
+		List<Orders> list=dao.printMonthSalesSelect("2021-03");
+		for(Orders o :list) {
+			System.out.println(o);
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}*/
 	}
 
 }
