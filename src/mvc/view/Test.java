@@ -11,5 +11,6 @@ public class Test {
 	public void aa() {
 		System.out.println("충돌 수정");
 		System.out.println();
+		System.out.println();
 	}
 }

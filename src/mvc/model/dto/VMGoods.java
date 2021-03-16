@@ -4,12 +4,15 @@ public class VMGoods {
 	private String vmNo; 
 	private int menuCode;
 	private String menuName; 
+	
 	public int getMenuCode() {
 		return menuCode;
 	}
+	
 	public void setMenuCode(int menuCode) {
 		this.menuCode = menuCode;
 	}
+	
 	private int price; 
 	private int kcal; 
 	private int stock;
