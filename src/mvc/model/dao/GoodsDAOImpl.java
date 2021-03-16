@@ -116,7 +116,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	 * 메뉴 등록하기
 	 * */
 	@Override
-	public int goodsInsert(String vm, int menuCode) throws SQLException {
+	public int goodsInsert(String vmNo, int menuCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -125,8 +125,8 @@ public class GoodsDAOImpl implements GoodsDAO {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, menuCode);
-			ps.setString(2, vm);
-			if(duplicateByMenuCode(vm, menuCode)) {
+			ps.setString(2, vmNo);
+			if(duplicateByMenuCode(vmNo, menuCode)) {
 				throw new SQLException("이미 존재하는 메뉴입니다.");
 			}
 			result = ps.executeUpdate();
@@ -139,7 +139,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	/**
 	 * 메뉴 중복 확인
 	 * */
-	public boolean duplicateByMenuCode(String vm,int menuCode) {
+	public boolean duplicateByMenuCode(String vmNo, int menuCode) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql= "select menu_code from goods where menu_code = ? and vm_no = ?";
@@ -149,7 +149,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 			con = DBUtil.getConnection();
 			ps= con.prepareStatement(sql);
 			ps.setInt(1, menuCode);
-			ps.setString(2, vm);
+			ps.setString(2, vmNo);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				result = true;

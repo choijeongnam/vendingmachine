@@ -100,7 +100,7 @@ public class MenuView {
 				OrdersController.printDaySalesSelect();
 				break;
 			case 8:
-				
+				printGoodsInset(id);
 				break;
 			case 9:
 				deleteMenu(id);
@@ -149,7 +149,14 @@ public class MenuView {
 	 * 메뉴등록
 	 * */
 	public static void printGoodsInset(String svId) {
+		System.out.println("등록할 자판기 번호: ");
+		String vmNo = sc.nextLine();
 		
+		System.out.println("등록할 메뉴 코드: ");
+		int menuCode = Integer.parseInt(sc.nextLine());
+		
+		Goods goods = new Goods(menuCode, vmNo, 10);
+		GoodsController.goodsInsert(vmNo, menuCode);
 	}
 	
 	/**
