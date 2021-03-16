@@ -215,12 +215,47 @@ public class OrdersDAOImpl implements OrdersDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
+				
+				
 				Orders orders = new Orders(0, rs.getInt(1), null, rs.getInt(2), rs.getInt(3), null);
 				ordersList.add(orders);
 			}
 		}finally {
 		}
 		return ordersList;
+	}
+
+	/**
+	 * 월별 매출 보기
+	 * */
+	@Override
+	public List<Orders> printMonthSalesSelect() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Orders> list = new ArrayList<Orders>();
+		String sql = "select vm_no, sum(total_price) 월매출, sum(qty) 총판매개수 \r\n"
+				+ "from orders \r\n"
+				+ "where to_char(to_date(sale_date), 'yyyy-mm') = ?\r\n"
+				+ "group by vm_no \r\n"
+				+ "order by vm_no";
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs= ps.executeQuery();
+			while(rs.next()) {
+				
+				String vmNo = rs.getString("vm_no");
+				int totalPrice = rs.getInt("월매출");
+				int qty = rs.getInt("총판매개수");
+				
+				Orders orders = new Orders(0, 0, vmNo, qty, totalPrice, null);
+				list.add(orders);
+			}
+		}finally {
+			
+		}
+		return list;
 	}
 	
 	

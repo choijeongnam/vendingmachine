@@ -84,4 +84,15 @@ public class OrdersService {
 		return list;
 	}
 	
+	/**
+	 * 월별 매출 보기
+	 * */
+	public List<Orders> printMonthSalesSelect() throws SQLException{
+		List<Orders> list = ordersDao.printMonthSalesSelect();
+		if(list.size()==0) {
+			throw new SQLException("자판기번호를 확인해주세요.");
+		}
+		return list;
+	}
+	
 }

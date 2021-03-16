@@ -78,5 +78,17 @@ public class OrdersController {
 		}
 	}
 	
+	/**
+	 * 월별 매출 조회
+	 * */
+	public static void printMonthSalesSelect() {
+		try {
+			List<Orders> list = ordersService.printMonthSalesSelect();
+			EndView.printMonthSalesList(list);
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
+	
 	
 }
