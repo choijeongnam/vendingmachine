@@ -71,17 +71,6 @@ public class OrdersService {
 		}
 		return result;
 	}
-	
-		
-	/**
-	 * 상품별 매출 보기
-	 * */
-	public List<Orders> printMenuSalesSelect() throws SQLException{
-		List<Orders> list = ordersDao.printMenuSalesSelect();
-		if(list.isEmpty()) {
-			throw new SQLException("판매 내역이 없습니다.");
-		}
-		return list;
-	}
+
 	
 }
