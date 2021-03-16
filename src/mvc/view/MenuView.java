@@ -75,7 +75,7 @@ public class MenuView {
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
 		System.out.println();
 		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |");
-		System.out.println("6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제  |  10. 자판기 정보 확인");
+		System.out.println("6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제  |  10. 자판기 정보 확인  |  11. 월별매출");
 		System.out.print("입력> ");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
@@ -108,6 +108,9 @@ public class MenuView {
 				break;
 			case 10:
 				VMController.selectVmBySvId();
+				break;
+			case 11:
+				inputDate();
 				break;
 			default:
 				System.out.println("상단에 보이는 숫자로 입력해주세요.");
@@ -215,6 +218,16 @@ public class MenuView {
 		int qty = Integer.parseInt(sc.nextLine());
 		
 		OrdersController.ordersInsert(menuCode, vmNo, qty);
+	}
+	
+	/**
+	 * 월별매출 날짜입력
+	 * */
+	public static void inputDate() {
+		System.out.println("확인할 날짜를 OOOO-OO 로 입력해주세요");
+		System.out.print("입력> ");
+		String saleDate = sc.nextLine();
+		OrdersController.printMonthSalesSelect(saleDate);
 	}
 
 	//public static void 

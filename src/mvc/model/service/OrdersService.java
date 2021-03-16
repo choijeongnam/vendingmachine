@@ -79,7 +79,7 @@ public class OrdersService {
 	public List<Orders> printMonthSalesSelect(String saleDate) throws SQLException{
 		List<Orders> list = ordersDao.printMonthSalesSelect(saleDate);
 		if(list.size()==0) {
-			throw new SQLException("자판기번호를 확인해주세요.");
+			throw new SQLException("날짜를 확인해주세요.");
 		}
 		return list;
 	}
