@@ -47,7 +47,7 @@ public class VMController {
 	public static void selectVmBySvId() {
 		try {
 			List<VendingMachine> vmList = vmService.selectVmBySvId();
-			EndView.printVm(vmList);
+			EndView.printVmById(vmList);
 		}catch(SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}

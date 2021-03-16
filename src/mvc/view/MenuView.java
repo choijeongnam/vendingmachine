@@ -105,6 +105,9 @@ public class MenuView {
 			case 9:
 				deleteMenu(id);
 				break;
+			case 10:
+				VMController.selectVmBySvId();
+				break;
 			default:
 				System.out.println("상단에 보이는 숫자로 입력해주세요.");
 				System.out.println();

@@ -82,10 +82,10 @@ public class EndView {
 	 * */
 	public static void printVmById(List<VendingMachine> vmList) {
 		System.out.println("자판기 정보 조회");
-		System.out.println("자판기 번호" + " | 위치" + " | 제조사" + " | 모델명");
+		System.out.println("자판기 번호" + " | 모델명" + " | 지점위치" + " | 제조회사");
 		
 		for(VendingMachine vm : vmList) {
-			System.out.println(vm.getVmNo() +" | "+ vm.getLoc() +" | " + vm.getCompany() + " | " + vm.getModelName());
+			System.out.println(vm.getVmNo() +"         | "+ vm.getModelName() +"   |   " + vm.getLoc() + "       | " + vm.getCompany());
 		}
 		
 		

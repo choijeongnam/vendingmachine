@@ -21,14 +21,14 @@ public class VMDAOImpl implements VMDAO{
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		List<VendingMachine> list = new ArrayList<VendingMachine>();
+		String sql = "select VM_NO, MODEL_NAME, LOC, COMPANY FROM VM WHERE UPPER(SV_ID) = UPPER('ADMIN')";
 		try {
 			con = DBUtil.getConnection();
-			ps= con.prepareStatement("select * from orders where vm_id= admin");
+			ps= con.prepareStatement(sql);
 		    rs = ps.executeQuery(); 
 
-	        
 	        while(rs.next()) {
-	        	VendingMachine vm  = new VendingMachine(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+	        	VendingMachine vm  = new VendingMachine(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(2), null);
 	        	list.add(vm);
 	        }
 		}finally {
