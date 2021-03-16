@@ -12,9 +12,11 @@ import mvc.view.MenuView;
 public class VMController {
 	static VMService vmService = new VMService();
 	
+	/**
+	 * 자판기 번호와 지점 보여주기
+	 * */
 	public static void selectVm() {
 		try{
-			
 			List<VendingMachine> vmList = vmService.selectVm();
 			EndView.printVm(vmList);		
 			String checkVmNo = MenuView.inputVmNo();
@@ -26,9 +28,12 @@ public class VMController {
 			System.out.println("다시 입력해주십시오.");
 			VMController.selectVm();
 		}
-		
 	}
 	
+	
+	/**
+	 * 자판기 번호 체크
+	 * */
 	public static void checkVmNo(String checkVmNo) {
 		try {
 			VendingMachine vm = vmService.checkVmNo(checkVmNo);
