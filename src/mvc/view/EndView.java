@@ -122,4 +122,18 @@ public class EndView {
 		}
 		
 	}
+
+
+	/**
+	 * 월별 매출 조회
+	 * */
+	public static void printMonthSalesList(List<Orders> list) {
+		System.out.println("월별 매출 확인하기");
+		System.out.println("자판기번호 |  월매출  | 총 판매개수");
+		for(Orders orders : list) {
+			System.out.println(orders.getVmNo()+"  ");
+			System.out.println(orders.getTotalPrice()+"  ");
+			System.out.println(orders.getQty());
+		}
+	}
 }

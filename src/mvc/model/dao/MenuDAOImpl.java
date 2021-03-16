@@ -21,7 +21,7 @@ public class MenuDAOImpl implements MenuDAO {
 		List<Menu> menuList = new ArrayList<Menu>();
 		String sql = "select m.menu_name, o.qty, o.total \r\n"
 				+ "from menu m join (select menu_code, sum(total_price) total, sum(qty) qty from orders group by menu_code) o\r\n"
-				+ "using(menu_code);";
+				+ "using(menu_code)";
 		try{
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
