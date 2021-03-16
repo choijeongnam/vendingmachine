@@ -104,7 +104,7 @@ public class EndView {
 		System.out.println("자판기 번호" + " | 모델명" + " | 지점위치" + " | 제조회사");
 		
 		for(VendingMachine vm : vmList) {
-			System.out.println(vm.getVmNo() +"         | "+ vm.getModelName() +"   |   " + vm.getLoc() + "       | " + vm.getCompany());
+			System.out.println("    "+vm.getVmNo() +"     | "+ vm.getModelName() +" |   " + vm.getLoc() + "   |   " + vm.getCompany());
 		}
 		
 		
@@ -116,9 +116,9 @@ public class EndView {
 	 * */
 	public static void printMenuSalesList(List<Menu> menuList) {
 		System.out.println("제품별 매출 확인하기");
-		System.out.println("   메뉴이름 | 판매액 | 판매개수");
+		System.out.println("   메뉴이름  |   판매액   | 판매개수");
 		for(Menu menu : menuList) {
-			System.out.println("  "+menu.getMenuName() +"  " + menu.getOrders().getTotalPrice() + "     " + menu.getOrders().getQty());
+			System.out.println(" "+menu.getMenuName() +"  |   " + menu.getOrders().getTotalPrice() + "\t  |   " + menu.getOrders().getQty());
 		}
 		
 	}
