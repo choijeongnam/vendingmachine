@@ -157,6 +157,7 @@ public class MenuView {
 		int menuCode = Integer.parseInt(sc.nextLine());
 		System.out.print("자판기 번호: ");
 		String vmNo = sc.nextLine();
+		
 		Goods goods = new Goods(menuCode, vmNo, 0);
 		GoodsController.menuOnvmDelete(goods);
 		}catch(NumberFormatException e) {
