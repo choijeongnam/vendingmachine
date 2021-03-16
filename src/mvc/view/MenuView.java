@@ -75,7 +75,7 @@ public class MenuView {
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
 		System.out.println();
 		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |");
-		System.out.println("6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제  |  10. 자판기 정보 확인  |  11. 월별매출");
+		System.out.println("6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제  |  10. 자판기 정보 확인  |  11. 월별매출  |  12. 메뉴확인");
 		System.out.print("입력> ");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
@@ -101,7 +101,7 @@ public class MenuView {
 				OrdersController.printDaySalesSelect();
 				break;
 			case 8:
-				
+				printGoodsInset(id);
 				break;
 			case 9:
 				deleteMenu(id);
@@ -111,6 +111,9 @@ public class MenuView {
 				break;
 			case 11:
 				inputDate();
+				break;
+			case 12:
+				MenuController.menuSelect();
 				break;
 			default:
 				System.out.println("상단에 보이는 숫자로 입력해주세요.");
@@ -156,7 +159,14 @@ public class MenuView {
 	 * 메뉴등록
 	 * */
 	public static void printGoodsInset(String svId) {
+		System.out.println("등록할 자판기 번호: ");
+		String vmNo = sc.nextLine();
 		
+		System.out.println("등록할 메뉴 코드: ");
+		int menuCode = Integer.parseInt(sc.nextLine());
+		
+		Goods goods = new Goods(menuCode, vmNo, 10);
+		GoodsController.goodsInsert(vmNo, menuCode);
 	}
 	
 	/**

@@ -51,4 +51,13 @@ public class GoodsService {
 		}
 		return goodsList;
 	}
+	
+	
+	/**
+	 * 메뉴 등록하기
+	 * */
+	public void goodsInsert(String vmNo, int menuCode) throws SQLException{
+		int result = goodsDAO.goodsInsert(vmNo, menuCode);
+		if(result == 0) throw new SQLException("메뉴등록을 할수 없습니다.");
+	}
 }

@@ -63,4 +63,17 @@ public class GoodsController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
+	
+	
+	/**
+	 * 메뉴 등록하기
+	 * */
+	public static void goodsInsert(String vmNo, int menuCode) {
+		try {
+			goodsService.goodsInsert(vmNo, menuCode);
+			System.out.println("메뉴가 등록되었습니다.");
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
 }
