@@ -11,28 +11,35 @@ import mvc.model.dto.VendingMachine;
 import mvc.util.DBUtil;
 
 public class VMDAOImpl implements VMDAO{
+	
+	
+	/**
+	 * 관리하는 자판기 상태 자판기테이블 속성 조회하기
+	 * */
 	public List<VendingMachine> selectVmBySvId () throws SQLException {
-			Connection con=null;
-			PreparedStatement ps=null;
-		  ResultSet rs=null;
-		  List<VendingMachine> list = new ArrayList<VendingMachine>();
-		 try {
-		   con = DBUtil.getConnection();
-		   ps= con.prepareStatement("select * from orders where vm_id= admin");
-	       rs = ps.executeQuery(); 
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<VendingMachine> list = new ArrayList<VendingMachine>();
+		try {
+			con = DBUtil.getConnection();
+			ps= con.prepareStatement("select * from orders where vm_id= admin");
+		    rs = ps.executeQuery(); 
+
 	        
 	        while(rs.next()) {
 	        	VendingMachine vm  = new VendingMachine(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-	        	
-	        	
 	        	list.add(vm);
 	        }
-  }finally {
-  	DBUtil.dbClose(con, ps, rs);
-  }
+		}finally {
+			DBUtil.dbClose(con, ps, rs);
+		}
 		return list;
 	}
 
+	/**
+	 * 자판기 번호와 지점 보여주기
+	 * */
 	@Override
 	public List<VendingMachine> selectVm() throws SQLException {
 		Connection con = null;
@@ -55,7 +62,11 @@ public class VMDAOImpl implements VMDAO{
 		}
 		return vmList;
 	}
-
+	
+	
+	/**
+	 * 자판기 번호 체크
+	 * */
 	@Override
 	public VendingMachine checkVmNo(String vmNo) throws SQLException {
 		Connection con = null;

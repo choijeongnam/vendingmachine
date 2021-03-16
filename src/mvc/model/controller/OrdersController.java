@@ -12,6 +12,9 @@ import mvc.view.FailView;
 public class OrdersController {
 	static OrdersService ordersService = new OrdersService();
 	
+	/**
+	 * 관리자가 주문내역 보기
+	 * */
 	public static void printOrderList() {
 		try {
 		ordersService.printOrderList();
@@ -22,6 +25,7 @@ public class OrdersController {
 			FailView.errorMessage(e1.getMessage());
 		}
 	}
+	
 	
 	/**
 	 * 자판기별 매출 조회
@@ -35,7 +39,10 @@ public class OrdersController {
 		}
 	}
 	
-
+	
+	/**
+	 * 자판기 상품 구매하기
+	 * */
 	public static void ordersInsert(int menuCode, String vmNo, int qty) {
 		try {
 			ordersService.ordersInsert(menuCode, vmNo, qty);
@@ -44,6 +51,8 @@ public class OrdersController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
+	
+	
 	/**
 	 * 일별 매출 조회
 	 * */
@@ -56,6 +65,7 @@ public class OrdersController {
 		}
 	}
 	
+	
 	/**
 	 * 메뉴별 매출 조회
 	 * */
@@ -67,4 +77,6 @@ public class OrdersController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
+	
+	
 }

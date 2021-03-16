@@ -24,6 +24,9 @@ public class VMService {
 	}
 	
 	
+	/**
+	 * 자판기 번호와 지점 보여주기
+	 * */
 	public List<VendingMachine> selectVm() throws SQLException{
 		List<VendingMachine> vmList = vmDAO.selectVm();
 		if(vmList.isEmpty()) {
@@ -32,6 +35,10 @@ public class VMService {
 		return vmList;
 	}
 	
+	
+	/**
+	 * 자판기 번호 체크
+	 * */
 	public VendingMachine checkVmNo(String vmNo) throws SQLException{
 		VendingMachine vm = vmDAO.checkVmNo(vmNo);
 		if(vm == null) {
