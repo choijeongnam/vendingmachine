@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import mvc.model.controller.GoodsController;
+import mvc.model.controller.MenuController;
 import mvc.model.controller.OrdersController;
 import mvc.model.controller.SupervisorController;
 import mvc.model.controller.VMController;
@@ -94,7 +95,7 @@ public class MenuView {
 				OrdersController.printVmSalesSelect();
 				break;
 			case 6:
-				OrdersController.printMenuSalesSelect();
+				MenuController.printMenuSalesSelect();
 				break;
 			case 7:
 				OrdersController.printDaySalesSelect();
