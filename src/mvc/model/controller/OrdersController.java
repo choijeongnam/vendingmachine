@@ -65,6 +65,9 @@ public class OrdersController {
 		}
 	}
 	
+<<<<<<< HEAD
+
+=======
 	
 	/**
 	 * 메뉴별 매출 조회
@@ -81,14 +84,15 @@ public class OrdersController {
 	/**
 	 * 월별 매출 조회
 	 * */
-	public static void printMonthSalesSelect() {
+	public static void printMonthSalesSelect(String saleDate) {
 		try {
-			List<Orders> list = ordersService.printMonthSalesSelect();
+			List<Orders> list = ordersService.printMonthSalesSelect(saleDate);
 			EndView.printMonthSalesList(list);
 		}catch(Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
 	
+>>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 	
 }

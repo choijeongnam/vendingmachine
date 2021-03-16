@@ -71,24 +71,13 @@ public class OrdersService {
 		}
 		return result;
 	}
-	
-		
-	/**
-	 * 상품별 매출 보기
-	 * */
-	public List<Orders> printMenuSalesSelect() throws SQLException{
-		List<Orders> list = ordersDao.printMenuSalesSelect();
-		if(list.isEmpty()) {
-			throw new SQLException("판매 내역이 없습니다.");
-		}
-		return list;
-	}
+
 	
 	/**
 	 * 월별 매출 보기
 	 * */
-	public List<Orders> printMonthSalesSelect() throws SQLException{
-		List<Orders> list = ordersDao.printMonthSalesSelect();
+	public List<Orders> printMonthSalesSelect(String saleDate) throws SQLException{
+		List<Orders> list = ordersDao.printMonthSalesSelect(saleDate);
 		if(list.size()==0) {
 			throw new SQLException("자판기번호를 확인해주세요.");
 		}

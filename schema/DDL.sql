@@ -120,3 +120,8 @@ update goods set stock=stock-2 where menu_code = 100 and vm_no = 'A03';
 rollback
 
 select VM_NO, LOC from VM
+
+
+select m.menu_name, o.sum(qty), o.sum(total_price) 
+from menu m join orders o
+using(menu_code);

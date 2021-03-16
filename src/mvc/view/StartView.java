@@ -18,7 +18,7 @@ public class StartView {
 
 	public static void main(String[] args) {
 
-		 MenuView.printMenu();
+		MenuView.printMenu();
 
 		/*
 		 *             **00자판기 입니다**
@@ -104,6 +104,7 @@ public class StartView {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}*/
+		
 	}
 
 }

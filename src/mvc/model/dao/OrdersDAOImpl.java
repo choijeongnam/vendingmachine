@@ -197,39 +197,12 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 
-	/**
-	 * 상품별 매출 보기
-	 * */
-	@Override
-	public List<Orders> printMenuSalesSelect() throws SQLException {
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		List<Orders> ordersList = new ArrayList<Orders>();
-		String sql = "select m.menu_name 메뉴이름, o.total 판매액, o.qty 판매개수 \r\n"
-				+ "from (select menu_code, sum(total_price) total, sum(qty) qty from orders group by menu_code) o\r\n"
-				+ "join menu m\r\n"
-				+ "using(menu_code)";
-		try {
-			con = DBUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			while(rs.next()) {
-				
-				
-				Orders orders = new Orders(0, rs.getInt(1), null, rs.getInt(2), rs.getInt(3), null);
-				ordersList.add(orders);
-			}
-		}finally {
-		}
-		return ordersList;
-	}
 
 	/**
 	 * 월별 매출 보기
 	 * */
 	@Override
-	public List<Orders> printMonthSalesSelect() throws SQLException {
+	public List<Orders> printMonthSalesSelect(String saleDate) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -242,9 +215,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, saleDate);
 			rs= ps.executeQuery();
 			while(rs.next()) {
-				
 				String vmNo = rs.getString("vm_no");
 				int totalPrice = rs.getInt("월매출");
 				int qty = rs.getInt("총판매개수");
