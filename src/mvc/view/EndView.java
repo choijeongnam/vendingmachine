@@ -18,9 +18,16 @@ public class EndView {
 		
 		System.out.println("자판기번호 | 메뉴코드 | 재고 수");
 		for(Goods goods :list) {
+			
 			System.out.print("   "+goods.getVmNo()+"     |");
 			System.out.print("    "+goods.getMenuCode()+"   |");
 			System.out.println("   "+goods.getStock());
+			/*
+			System.out.print("   "+goods.getVmNo()+"\t");
+			System.out.print("\t"+goods.getMenuCode()+"\t");
+			System.out.println("   "+goods.getStock());
+			*/ 
+			
 		}
 		System.out.println();
 	}
@@ -32,11 +39,17 @@ public class EndView {
 	 * */
 	public static void printVmSalesList(List<Orders> list) {
 		System.out.println("자판기별 매출 확인하기");
-		System.out.println("자판기번호   "+"|   총 판매액   |"+"   총 판매개수");
+		System.out.println("자판기번호 "+"|   총 판매액   |"+"  총 판매개수");
 		for(Orders orders : list) {
-			System.out.print(orders.getVmNo() + "\t\t    ");
-			System.out.print(orders.getTotalPrice() + "             ");
-			System.out.println(orders.getQty());
+			/*
+			System.out.print("    "+orders.getVmNo() + "    |      ");
+			System.out.print(orders.getTotalPrice() + "    |   ");
+			System.out.println("    "+orders.getQty());
+			*/
+			System.out.print("    "+orders.getVmNo() + "\t\t ");
+			System.out.print(orders.getTotalPrice() + "\t");
+			System.out.println("\t  "+orders.getQty());
+			
 		}
 	}
 
@@ -50,9 +63,9 @@ public class EndView {
 
 
 	public static void printGoods(List<VMGoods> goodsList) {
-		System.out.println(" 메뉴코드 |    제품명    | 가격 |칼로리|재고");
+		System.out.println(" 메뉴코드 |    제품명    | 가격 | 칼로리 | 재고");
 		for(VMGoods goods :goodsList) {
-			System.out.println(" "+goods.getMenuCode()+" |"+goods.getMenuName()+"|"+goods.getPrice()+"|"+goods.getKcal()+"|"+goods.getStock());
+			System.out.println("    "+goods.getMenuCode()+"   |  "+goods.getMenuName()+"  | "+goods.getPrice()+" |  "+goods.getKcal()+"   |  "+goods.getStock());
 		}
 	}
 	/**
@@ -60,10 +73,15 @@ public class EndView {
 	 * */
 	public static void printDaySalesList(List<Orders> list) {
 		System.out.println("일별 매출 확인하기");
-		System.out.println("    날짜    "+"|   총 판매액   |"+"  총 판매개수");
+		System.out.println("     날짜     "+"|   총 판매액   |"+" 총 판매개수");
 		for(Orders orders : list) {
-			System.out.print(orders.getSaleDate()+"  |    ");
+			/*
+			System.out.print("  "+orders.getSaleDate()+"  |    ");
 			System.out.print(orders.getTotalPrice()+"      |    ");
+			System.out.println(orders.getQty());
+			*/
+			System.out.print("  "+orders.getSaleDate()+"\t    ");
+			System.out.print(orders.getTotalPrice()+"\t      ");
 			System.out.println(orders.getQty());
 		}
 	}
@@ -92,8 +110,12 @@ public class EndView {
 	}
 
 
-
+	/**
+	 * 제품별 매출 조회
+	 * */
 	public static void printMenuSalesList(List<Orders> ordersList) {
+		System.out.println("제품별 매출 확인하기");
+		System.out.println("메뉴코드 | 총 판매액 | 총 판매개수");
 		for(Orders orders : ordersList) {
 			System.out.println(orders.getMenuCode() +" | " + orders.getTotalPrice() + " | " + orders.getQty());
 		}
