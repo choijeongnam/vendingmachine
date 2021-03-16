@@ -5,7 +5,16 @@ public class Menu {
 	private String menuName;
 	private int price;
 	private int kcal;
+	private Orders orders;
 	
+	
+	
+	public Orders getOrders() {
+		return orders;
+	}
+	public void setOrders(Orders orders) {
+		this.orders = orders;
+	}
 	public Menu(){};
 	public Menu(int menuCode, String menuName, int price, int kcal) {
 		super();

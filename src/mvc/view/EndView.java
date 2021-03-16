@@ -3,6 +3,7 @@ package mvc.view;
 import java.util.List;
 
 import mvc.model.dto.Goods;
+import mvc.model.dto.Menu;
 import mvc.model.dto.Orders;
 import mvc.model.dto.VMGoods;
 import mvc.model.dto.VendingMachine;
@@ -113,11 +114,11 @@ public class EndView {
 	/**
 	 * 제품별 매출 조회
 	 * */
-	public static void printMenuSalesList(List<Orders> ordersList) {
+	public static void printMenuSalesList(List<Menu> menuList) {
 		System.out.println("제품별 매출 확인하기");
-		System.out.println("메뉴코드 | 총 판매액 | 총 판매개수");
-		for(Orders orders : ordersList) {
-			System.out.println(orders.getMenuCode() +" | " + orders.getTotalPrice() + " | " + orders.getQty());
+		System.out.println("메뉴이름 | 총 판매액 | 총 판매개수");
+		for(Menu menu : menuList) {
+			System.out.println(menu.getMenuCode() +" | " + menu.getOrders().getTotalPrice() + " | " + menu.getOrders().getQty());
 		}
 		
 	}
