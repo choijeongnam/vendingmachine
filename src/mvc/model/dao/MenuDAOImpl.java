@@ -12,7 +12,10 @@ import mvc.model.dto.Orders;
 import mvc.util.DBUtil;
 
 public class MenuDAOImpl implements MenuDAO {
-
+	
+	/**
+	 * 제품별 매출 보기
+	 * */
 	@Override
 	public List<Menu> printMenuSalesSelect() throws SQLException {
 		Connection con = null;
