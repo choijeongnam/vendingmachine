@@ -18,9 +18,10 @@ public class VMController {
 			List<VendingMachine> vmList = vmService.selectVm();
 			EndView.printVm(vmList);		
 			String checkVmNo = MenuView.inputVmNo();
-			VendingMachine vm = vmService.checkVmNo(checkVmNo);
 			System.out.println();
+			VendingMachine vm = vmService.checkVmNo(checkVmNo);
 			GoodsController.goodsSelect(checkVmNo);
+			System.out.println();
 			MenuView.sellgoods(checkVmNo);
 		}catch(SQLException e) {
 			System.out.println("다시 입력해주십시오.");
@@ -34,6 +35,15 @@ public class VMController {
 			VendingMachine vm = vmService.checkVmNo(checkVmNo);
 		}catch(SQLException e){
 			e.printStackTrace();
+			FailView.errorMessage(e.getMessage());
+		}
+	}
+	
+	public static void selectVmBySvId() {
+		try {
+			List<VendingMachine> vmList = vmService.selectVmBySvId();
+			EndView.printVm(vmList);
+		}catch(SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}

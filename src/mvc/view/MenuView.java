@@ -17,44 +17,48 @@ public class MenuView {
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static void printMenu() {
-		int menu = 0;
-		while(true) {
+		try {
+			int menu = 0;
+			while(true) {
 
-			SessionSet ss = SessionSet.getInstance();
-			System.out.println(ss.getSet()); //세션 메소드 생성
+				SessionSet ss = SessionSet.getInstance();
+				System.out.println(ss.getSet()); //세션 메소드 생성
 			
-			System.out.println("\t\t**** 샐러드 자판기 ****");
-			System.out.println("\t\t**** 항목 선택 ****");
-			System.out.println("1.샐러드 구매 \t | 2. 관리자 로그인 \t | 9. 종료");
-			System.out.print("입력> ");
+				System.out.println("\t\t  ***** 샐러드 자판기 *****");
+				System.out.println("\t\t    ***** 항목 선택 *****");
+				System.out.println();
+				System.out.println("1. 샐러드 구매\t|\t2. 관리자 로그인\t|\t9. 종료");			
+				System.out.print("입력> ");
 			
-			menu = Integer.parseInt(sc.nextLine());
+				menu = Integer.parseInt(sc.nextLine());
 			
-			switch(menu) {
-			case 1:
+				switch(menu) {
+				case 1:
 				customerService();
 				break;
-			case 2:
+				case 2:
 				login();
 				break;
-			case 9:
+				case 9:
 				System.exit(0);
+				default:
+					System.out.println("상단에 보이는 숫자로 입력해주세요.");
+					System.out.println();
+				}
 			}
+		}catch(NumberFormatException e) {
+			FailView.errorMessage("숫자만 입력해주세요.");
+			printMenu();
 		}
 	}
-	
-	
+
 	private static void customerService() {
-		
-
-
+		System.out.println();
 		VMController.selectVm();
-		
-		
 	}
 
-
 	public static void login() {
+		System.out.println();
 		System.out.print("아이디: ");
 		String id = sc.nextLine();
 		System.out.print("비밀번호: ");
@@ -63,12 +67,15 @@ public class MenuView {
 	}
 	
 	public static void printSupervisorMenu(String id) {
+	try {	
 		while(true) {
 		SessionSet ss = SessionSet.getInstance();
 		System.out.println(ss.getSet());
 		System.out.println("\t\t\t----"+id+"님 로그인 중----");
-		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  ");
-		System.out.println("|  5. 자판기별매출  |  6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제");
+		System.out.println();
+		System.out.println("1. 로그아웃  |  2. 주문내역확인  |  3. 재고확인  |  4. 재고보충  |  5. 자판기별매출  |");
+		System.out.println("6. 제품별매출  |  7. 일매출  |  8. 메뉴등록  |  9. 메뉴삭제  |  10. 자판기 정보 확인");
+		System.out.print("입력> ");
 		int menu = Integer.parseInt(sc.nextLine());
 		switch(menu) {
 			case 1:
@@ -98,8 +105,16 @@ public class MenuView {
 			case 9:
 				deleteMenu(id);
 				break;
+			default:
+				System.out.println("상단에 보이는 숫자로 입력해주세요.");
+				System.out.println();
 			}
 		}
+	}catch(NumberFormatException e) {
+		FailView.errorMessage("숫자만 입력해주세요");
+		System.out.println();
+		printSupervisorMenu(id);
+	}
 	}
 	
 	
@@ -111,16 +126,19 @@ public class MenuView {
 		
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);
+		System.out.println(svId+"님 로그아웃되었습니다.");
+		System.out.println();
 	}
 	
 	/**
 	 * 재고보충
 	 * */
 	public static void printStockInsert(String svId) {
-		System.out.println("보충할 자판기 번호: ");
+		System.out.println();
+		System.out.print("보충할 자판기 번호: ");
 		String vmNo = sc.nextLine();
 		
-		System.out.println("보충할 재고 량: ");
+		System.out.print("보충할 재고량: ");
 		int stock = Integer.parseInt(sc.nextLine());
 		
 		Goods goods = new Goods(0, vmNo, stock);
@@ -153,7 +171,7 @@ public class MenuView {
 	public static void deleteMenu(String svId) {
 		
 		try {
-		System.out.print("삭제할 메뉴 코드 : ");
+		System.out.print("삭제할 메뉴 코드: ");
 		int menuCode = Integer.parseInt(sc.nextLine());
 		System.out.print("자판기 번호: ");
 		String vmNo = sc.nextLine();
@@ -171,6 +189,7 @@ public class MenuView {
 	 * 자판기번호 입력
 	 * */
 	public static String inputVmNo() {
+		System.out.println();
 		System.out.println("어느 지점 자판기에서 구매하시겠습니까?");
 		System.out.println("자판기 번호로 입력해주십시오.");
 		
@@ -186,6 +205,7 @@ public class MenuView {
 		System.out.print("입력> ");
 		int menuCode = Integer.parseInt(sc.nextLine());
 		
+		System.out.println();
 		System.out.println("수량을 입력해주십시오.");
 		System.out.print("입력> ");
 		int qty = Integer.parseInt(sc.nextLine());
@@ -193,6 +213,6 @@ public class MenuView {
 		OrdersController.ordersInsert(menuCode, vmNo, qty);
 	}
 
-
+	//public static void 
 	
 }

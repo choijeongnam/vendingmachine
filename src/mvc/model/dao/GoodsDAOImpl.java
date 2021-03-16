@@ -74,7 +74,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "update goods set stock = stock+? where vm_no = ?";
+		String sql = "update goods set stock = stock+? where upper(vm_no) = upper(?)";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);

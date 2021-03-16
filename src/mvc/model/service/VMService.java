@@ -13,9 +13,9 @@ public class VMService {
 	/**
 	 * 자판기 정보 조회(VMService)
 	 * */
-	public List<VendingMachine> selectVmBySvId (String svId) throws SQLException {
+	public List<VendingMachine> selectVmBySvId () throws SQLException {
 		VMDAO vmDAO = new VMDAOImpl();
-		List<VendingMachine> vmList = vmDAO.selectVmBySvId(svId);
+		List<VendingMachine> vmList = vmDAO.selectVmBySvId();
 		if(vmList.isEmpty()) {
 			throw new SQLException("해당 관리자가 관리하는 자판기는 없습니다.");
 		}

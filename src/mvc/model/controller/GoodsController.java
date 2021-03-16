@@ -30,6 +30,8 @@ public class GoodsController {
 	public static void stockInsert(Goods goods) {
 		try {
 			goodsService.stockInsert(goods);
+			EndView.printMessage("재고가 보충되었습니다!");
+			System.out.println();
 		}catch(Exception e) {
 			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());

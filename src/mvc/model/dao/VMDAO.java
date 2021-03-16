@@ -10,7 +10,7 @@ public interface VMDAO {
 	 * 관리하는 자판기 상태 자판기테이블 속성 조회하기
 	 * select 
 	 * */
-	List<VendingMachine> selectVmBySvId (String svId) throws SQLException;
+	List<VendingMachine> selectVmBySvId () throws SQLException;
 	
 	/**
 	 * 자판기 번호와 지점 보여주기

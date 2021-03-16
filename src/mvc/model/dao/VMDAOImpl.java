@@ -11,15 +11,14 @@ import mvc.model.dto.VendingMachine;
 import mvc.util.DBUtil;
 
 public class VMDAOImpl implements VMDAO{
-	public List<VendingMachine> selectVmBySvId (String svId) throws SQLException {
+	public List<VendingMachine> selectVmBySvId () throws SQLException {
 			Connection con=null;
 			PreparedStatement ps=null;
 		  ResultSet rs=null;
 		  List<VendingMachine> list = new ArrayList<VendingMachine>();
 		 try {
 		   con = DBUtil.getConnection();
-		   ps= con.prepareStatement("select * from orders where vm_id=?");
-		   ps.setString(1, svId);
+		   ps= con.prepareStatement("select * from orders where vm_id= admin");
 	       rs = ps.executeQuery(); 
 	        
 	        while(rs.next()) {
