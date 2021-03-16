@@ -159,10 +159,10 @@ public class MenuView {
 	 * 메뉴등록
 	 * */
 	public static void printGoodsInset(String svId) {
-		System.out.println("등록할 자판기 번호: ");
+		System.out.print("등록할 자판기 번호: ");
 		String vmNo = sc.nextLine();
 		
-		System.out.println("등록할 메뉴 코드: ");
+		System.out.print("등록할 메뉴 코드: ");
 		int menuCode = Integer.parseInt(sc.nextLine());
 		
 		Goods goods = new Goods(menuCode, vmNo, 10);
@@ -188,16 +188,16 @@ public class MenuView {
 	public static void deleteMenu(String svId) {
 		
 		try {
-		System.out.print("삭제할 메뉴 코드: ");
-		int menuCode = Integer.parseInt(sc.nextLine());
+		
 		System.out.print("자판기 번호: ");
 		String vmNo = sc.nextLine();
+		System.out.print("삭제할 메뉴 코드: ");
+		int menuCode = Integer.parseInt(sc.nextLine());
 		
 		Goods goods = new Goods(menuCode, vmNo, 0);
 		GoodsController.menuOnvmDelete(goods);
 		}catch(NumberFormatException e) {
 			System.out.println("메뉴코드는 숫자만 입력하세요");
-			
 			deleteMenu(svId);
 		}
 		

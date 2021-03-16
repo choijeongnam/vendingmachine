@@ -104,7 +104,7 @@ public class EndView {
 		System.out.println("자판기 번호" + " | 모델명" + " | 지점위치" + " | 제조회사");
 		
 		for(VendingMachine vm : vmList) {
-			System.out.println(vm.getVmNo() +"         | "+ vm.getModelName() +"   |   " + vm.getLoc() + "       | " + vm.getCompany());
+			System.out.println(vm.getVmNo() +"         | "+ vm.getModelName() +" |   " + vm.getLoc() + " | " + vm.getCompany());
 		}
 		
 		
