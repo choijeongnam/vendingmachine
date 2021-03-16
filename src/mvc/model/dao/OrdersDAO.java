@@ -38,5 +38,5 @@ public interface OrdersDAO {
 	/**
 	 * 월별 매출 보기
 	 * */
-	List<Orders> printMonthSalesSelect() throws SQLException;
+	List<Orders> printMonthSalesSelect(String saleDate) throws SQLException;
 }
