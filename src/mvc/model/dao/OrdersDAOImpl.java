@@ -16,46 +16,50 @@ import mvc.util.DBUtil;
 public class OrdersDAOImpl implements OrdersDAO {
 	GoodsDAO goodsDAO = new GoodsDAOImpl();
 	
+	/**
+	 * 자판기 상품 구매하기
+	 * */
 	@Override
 	public int ordersInsert(int menuCode, String vmNo, int qty) throws SQLException {
-		 Connection con=null;
-		  PreparedStatement ps=null;
-		  String sql="INSERT INTO ORDERS(ORDER_SEQ , MENU_CODE, VM_NO, QTY, TOTAL_PRICE, SALE_DATE)"
+		Connection con=null;
+		PreparedStatement ps=null;
+		String sql="INSERT INTO ORDERS(ORDER_SEQ , MENU_CODE, VM_NO, QTY, TOTAL_PRICE, SALE_DATE)"
 		  		+ "VALUES(ORDER_SEQ.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
-		  int result=0;
-		 try {
+		int result=0;
+		try {
 			
-		   con = DBUtil.getConnection();
-		   con.setAutoCommit(false);
+			con = DBUtil.getConnection();
+			con.setAutoCommit(false);
 		   
-		   ps = con.prepareStatement(sql);
-		   if(qty == 0) {throw new SQLException("수량 0개를 입력하셨습니다. 다시 입력해주십시오");}
-		   ps.setInt(1, menuCode);
-		   ps.setString(2, vmNo);
-		   ps.setInt(3, qty);
-		   ps.setInt(4, qty*getTotalAmount(menuCode));
+			ps = con.prepareStatement(sql);
+			if(qty == 0) {throw new SQLException("수량 0개를 입력하셨습니다. 다시 입력해주십시오");}
+			ps.setInt(1, menuCode);
+			ps.setString(2, vmNo);
+			ps.setInt(3, qty);
+			ps.setInt(4, qty*getTotalAmount(menuCode));
 		  
-		   result = ps.executeUpdate();
-		   if(result==0) {
-			   con.rollback();
-			   throw new SQLException("주문 실패...");   
+			result = ps.executeUpdate();
+			if(result==0) {
+				con.rollback();
+				throw new SQLException("주문 실패...");   
 		   }
 			   //주문수량만큼 재고량 감소하기
 		   int stockResult = decrementStock(con, menuCode, vmNo, qty);
 		   if(result == 0) {
-				  con.rollback();
-				  throw new SQLException("재고량 부족으로 구매하실 수 없습니다.");
-			  }
+			   con.rollback();
+			   throw new SQLException("재고량 부족으로 구매하실 수 없습니다.");
+		   }
 		   con.commit();
-		
 		   }finally {
-		    	  con.commit();
-		      	DBUtil.dbClose(con, ps, null);
-		      }
-		 return result;
+			   con.commit();
+			   DBUtil.dbClose(con, ps, null);
+		   }
+		return result;
 	}
 	
-	
+	/**
+	 * 선택한 메뉴의 총 가격
+	 * */
 	public int getTotalAmount(int menuCode) throws SQLException{
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -79,6 +83,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return price;
 	}
 	
+	/**
+	 * 재고량 감소
+	 * */
 	public int decrementStock(Connection con ,int menuCode, String vmNo, int qty) throws SQLException{
 		PreparedStatement ps=null;
 		String sql = "update goods set stock=stock-? where menu_code = ? and vm_no = ?";
@@ -103,6 +110,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 
+	/**
+	 * 관리자가 주문내역 보기
+	 * */
 	@Override
 	public List<Orders> printOrderList() throws SQLException {
 		Connection con = null;
@@ -158,6 +168,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 
+	/**
+	 * 일별 매출 보기
+	 * */
 	@Override
 	public List<Orders> printDaySalesSelect() throws SQLException {
 		Connection con = null;
@@ -184,6 +197,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 
+	/**
+	 * 상품별 매출 보기
+	 * */
 	@Override
 	public List<Orders> printMenuSalesSelect() throws SQLException {
 		Connection con = null;
@@ -200,13 +216,12 @@ public class OrdersDAOImpl implements OrdersDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Orders orders = new Orders(0, rs.getInt(1), null, rs.getInt(2), rs.getInt(3), null);
-				
 				ordersList.add(orders);
 			}
 		}finally {
-			
 		}
 		return ordersList;
 	}
+	
 	
 }

@@ -15,6 +15,9 @@ import mvc.util.DBUtil;
 
 public class GoodsDAOImpl implements GoodsDAO {
 	
+	/**
+	 * 지점 별 메뉴보여주기
+	 * */
 	@Override
 	public List<VMGoods> goodsSelect(String vmNo) throws SQLException {
 		Connection con = null;
@@ -33,7 +36,6 @@ public class GoodsDAOImpl implements GoodsDAO {
 
 				VMGoods goods = new VMGoods(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
 				
-				
 				goodsList.add(goods);
 			}
 		}finally {
@@ -42,6 +44,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return goodsList;
 	}
 	
+	/**
+	 * 재고 확인하기
+	 * */
 	@Override
 	public List<Goods> selectStock(String vmNo) throws SQLException {
 		Connection con = null;
@@ -58,12 +63,10 @@ public class GoodsDAOImpl implements GoodsDAO {
 				Goods goods = new Goods(rs.getInt(1), rs.getString(2), rs.getInt(3));
 				list.add(goods);
 			}
-			
 		}finally {
 			DBUtil.dbClose(con, ps, rs);
 		}
 		return list;
-		
 	}
 
 	/**
@@ -85,10 +88,12 @@ public class GoodsDAOImpl implements GoodsDAO {
 		}finally {
 			DBUtil.dbClose(con, ps);
 		}
-		
 		return result;
 	}
 
+	/**
+	 * 자판기에 있는 메뉴 삭제하기(goods에 있는 메뉴) 
+	 * */
 	@Override
 	public int menuOnvmDelete(Goods goods) throws SQLException, NumberFormatException{
 		Connection con = null;
@@ -100,9 +105,6 @@ public class GoodsDAOImpl implements GoodsDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, goods.getMenuCode());
 			ps.setString(2, goods.getVmNo());
-			/*if() {
-			throw new NumberFormatException("메뉴코드를 확인해주세요.");
-			}*/
 			result = ps.executeUpdate();
 		}finally {
 			DBUtil.dbClose(con, ps);
@@ -111,7 +113,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	}
 
 	/**
-	 * 메뉴 등록
+	 * 메뉴 등록하기
 	 * */
 	@Override
 	public int goodsInsert(String vm, int menuCode) throws SQLException {
@@ -134,7 +136,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
-	
+	/**
+	 * 메뉴 중복 확인
+	 * */
 	public boolean duplicateByMenuCode(String vm,int menuCode) {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -150,7 +154,6 @@ public class GoodsDAOImpl implements GoodsDAO {
 			if(rs.next()) {
 				result = true;
 			}
-			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -159,6 +162,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 	
+	/**
+	 * 자판기별 해당상품 재고 보기
+	 * */
 	public VMGoods vmGoodselect(Connection con,int menuCode, String vmNo) throws SQLException{
 		VMGoods good = null;
 		PreparedStatement ps = null;
