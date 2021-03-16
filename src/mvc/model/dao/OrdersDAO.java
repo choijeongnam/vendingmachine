@@ -34,4 +34,9 @@ public interface OrdersDAO {
 	 * 상품별 매출 보기
 	 * */
 	List<Orders> printMenuSalesSelect() throws SQLException;
+	
+	/**
+	 * 월별 매출 보기
+	 * */
+	List<Orders> printMonthSalesSelect() throws SQLException;
 }
