@@ -177,7 +177,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Orders> list = new ArrayList<Orders>();
-		String sql = "select to_char(to_date(sale_date), 'yyyy-mm-dd') 날짜, sum(total_price) 일매출, sum(qty) 총판매개수 from orders group by sale_date";
+		String sql = "select to_char(to_date(sale_date), 'yyyy-mm-dd') 날짜, sum(total_price) 일매출, sum(qty) 총판매개수 "
+				+ "from orders group by sale_date";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
