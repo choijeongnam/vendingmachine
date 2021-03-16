@@ -65,22 +65,6 @@ public class OrdersController {
 		}
 	}
 	
-<<<<<<< HEAD
-
-=======
-	
-	/**
-	 * 메뉴별 매출 조회
-	 * */
-	public static void printMenuSalesSelect() {
-		try {
-			List<Orders> list = ordersService.printMenuSalesSelect();
-			EndView.printMenuSalesList(list);
-		}catch(SQLException e) {
-			FailView.errorMessage(e.getMessage());
-		}
-	}
-	
 	/**
 	 * 월별 매출 조회
 	 * */
@@ -92,7 +76,5 @@ public class OrdersController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-	
->>>>>>> branch 'master' of https://github.com/choijeongnam/vendingmachine.git
 	
 }
