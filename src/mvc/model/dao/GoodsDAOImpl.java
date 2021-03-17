@@ -25,7 +25,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Goods> list = new ArrayList<Goods>();
-		String sql = "select menu_code, vm_no, stock from goods where upper(vm_no)=upper(?)";
+		String sql = "select menu_code, vm_no, stock from goods where upper(vm_no)=upper(?) order by menu_code";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);

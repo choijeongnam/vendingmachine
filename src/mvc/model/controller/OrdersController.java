@@ -61,7 +61,7 @@ public class OrdersController {
 			List<Orders> list = ordersService.printDaySalesSelect();
 			EndView.printDaySalesList(list);
 		}catch(Exception e) {
-			e.printStackTrace();
+			FailView.errorMessage(e.getMessage());
 		}
 	}
 	

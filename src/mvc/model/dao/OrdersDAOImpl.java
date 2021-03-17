@@ -91,7 +91,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	 * */
 	public int decrementStock(Connection con ,int menuCode, String vmNo, int qty) throws SQLException{
 		PreparedStatement ps=null;
-		String sql = "update goods set stock=stock-? where menu_code = ? and vm_no = ?";
+		String sql = "update goods set stock=stock-? where menu_code = ? and upper(vm_no) = upper(?)";
 		Goods good = null;
 		int result = 0;
 		try {
