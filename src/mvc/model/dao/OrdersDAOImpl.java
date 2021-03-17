@@ -25,7 +25,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		String sql="INSERT INTO ORDERS(ORDER_SEQ , MENU_CODE, VM_NO, QTY, TOTAL_PRICE, SALE_DATE)"
-		  		+ "VALUES(ORDER_SEQ.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
+		  		+ "VALUES(ORDER_SEQ.NEXTVAL, ?, upper(?), ?, ?, SYSDATE)";
 		int result=0;
 		try {
 			
