@@ -82,8 +82,9 @@ public class EndView {
 
 
 	public static void printVm(List<VendingMachine> vmList) {
+		System.out.println("자판기번호 | 지점위치");
 		for(VendingMachine vm : vmList) {
-			System.out.println(vm.getVmNo() +"  |  "+vm.getLoc());
+			System.out.println("    "+vm.getVmNo() +"    |   "+vm.getLoc());
 		}
 		
 	}
