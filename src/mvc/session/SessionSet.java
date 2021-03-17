@@ -1,6 +1,7 @@
 package mvc.session;
 
 import java.util.HashSet;
+
 import java.util.Set;
 
 
@@ -45,6 +46,7 @@ public class SessionSet {
 	 * ·Î±×¾Æ¿ô
 	 * */
 	public void remove(Session session) {
-		set.remove(session);
+		//set.remove(session);
+		set.clear();
 	}
 }
