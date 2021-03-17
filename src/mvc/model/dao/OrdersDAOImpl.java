@@ -120,7 +120,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		ResultSet rs = null;
 		Orders orders = null;
 		List<Orders> orderList = new ArrayList<Orders>();
-		String sql = "select * from Orders";
+		String sql = "select * from Orders order by order_seq";
 		try {
 			con = DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
