@@ -46,7 +46,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		   }
 			   //주문수량만큼 재고량 감소하기
 		   int stockResult = decrementStock(con, menuCode, vmNo, qty);
-		   if(result == 0) {
+		   if(stockResult == 0) {
 			   con.rollback();
 			   throw new SQLException("재고량 부족으로 구매하실 수 없습니다.");
 		   }
