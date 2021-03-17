@@ -27,6 +27,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		String sql="INSERT INTO ORDERS(ORDER_SEQ , MENU_CODE, VM_NO, QTY, TOTAL_PRICE, SALE_DATE)"
 		  		+ "VALUES(ORDER_SEQ.NEXTVAL, ?, upper(?), ?, ?, SYSDATE)";
 		int result=0;
+		int stockResult=0;
 		try {
 			
 			con = DBUtil.getConnection();
@@ -38,22 +39,23 @@ public class OrdersDAOImpl implements OrdersDAO {
 			ps.setString(2, vmNo);
 			ps.setInt(3, qty);
 			ps.setInt(4, qty*getTotalAmount(menuCode));
-		  
+			stockResult = decrementStock(con, menuCode, vmNo, qty);
+			  if(stockResult == 0) {
+				   con.rollback();
+			   }
+			   
 			result = ps.executeUpdate();
-			if(result==0) {
+			if(result == 0) {
 				con.rollback();
-				throw new SQLException("주문 실패...");   
-		   }
+				throw new SQLException("주문 실패했습니다.");
+			}
 			   //주문수량만큼 재고량 감소하기
-		   int stockResult = decrementStock(con, menuCode, vmNo, qty);
-		   if(stockResult == 0) {
-			   con.rollback();
-			   throw new SQLException("재고량 부족으로 구매하실 수 없습니다.");
-		   }
+		   
+
 		   con.commit();
 		   }finally {
 			   con.commit();
-			   DBUtil.dbClose(con, ps, null);
+			   DBUtil.dbClose(con, ps);
 		   }
 		return result;
 	}
