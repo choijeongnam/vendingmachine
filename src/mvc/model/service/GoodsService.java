@@ -1,12 +1,12 @@
 package mvc.model.service;
 
 import java.sql.SQLException;
+
 import java.util.List;
 
 import mvc.model.dao.GoodsDAO;
 import mvc.model.dao.GoodsDAOImpl;
 import mvc.model.dto.Goods;
-import mvc.model.dto.VMGoods;
 
 public class GoodsService {
 	GoodsDAO goodsDAO = new GoodsDAOImpl();
@@ -40,17 +40,6 @@ public class GoodsService {
 		
 	}
 	
-	/**
-	 * 자판기 선택 및 제품 보여주기
-	 * */
-	public List<VMGoods> goodsSelect(String vmNo) throws SQLException{
-		List<VMGoods> goodsList = goodsDAO.goodsSelect(vmNo);
-		if(goodsList.isEmpty()) {
-			throw new SQLException("해당 자판기가 존재하지 않습니다.");
-			
-		}
-		return goodsList;
-	}
 	
 	
 	/**

@@ -2,10 +2,10 @@ package mvc.view;
 
 import java.util.List;
 
+
 import mvc.model.dto.Goods;
 import mvc.model.dto.Menu;
 import mvc.model.dto.Orders;
-import mvc.model.dto.VMGoods;
 import mvc.model.dto.VendingMachine;
 import oracle.net.aso.g;
 
@@ -59,10 +59,10 @@ public class EndView {
 
 
 
-	public static void printGoods(List<VMGoods> goodsList) {
+	public static void printGoods(List<Menu> list) {
 		System.out.println(" 메뉴코드 |    제품명    | 가격 | 칼로리 | 재고");
-		for(VMGoods goods :goodsList) {
-			System.out.println("    "+goods.getMenuCode()+"   |  "+goods.getMenuName()+"  | "+goods.getPrice()+" |  "+goods.getKcal()+"   |  "+goods.getStock());
+		for(Menu menu : list) {
+			System.out.println("    "+menu.getMenuCode()+"   |  "+menu.getMenuName()+"  | "+menu.getPrice()+" |  "+menu.getKcal()+"   |  "+menu.getGoods().getStock());
 		}
 	}
 	/**

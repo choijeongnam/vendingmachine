@@ -6,9 +6,15 @@ public class Menu {
 	private int price;
 	private int kcal;
 	private Orders orders;
+	private Goods goods;
 	
 	
-	
+	public Goods getGoods() {
+		return goods;
+	}
+	public void setGoods(Goods goods) {
+		this.goods = goods;
+	}
 	public Orders getOrders() {
 		return orders;
 	}

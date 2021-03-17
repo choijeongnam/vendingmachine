@@ -1,6 +1,7 @@
 package mvc.model.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,9 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import mvc.model.dto.Goods;
 import mvc.model.dto.Menu;
 import mvc.model.dto.Orders;
-import mvc.model.dto.VMGoods;
 import mvc.util.DBUtil;
 
 public class OrdersDAOImpl implements OrdersDAO {
@@ -89,7 +90,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	public int decrementStock(Connection con ,int menuCode, String vmNo, int qty) throws SQLException{
 		PreparedStatement ps=null;
 		String sql = "update goods set stock=stock-? where menu_code = ? and vm_no = ?";
-		VMGoods good = null;
+		Goods good = null;
 		int result = 0;
 		try {
 			con = DBUtil.getConnection();
@@ -98,7 +99,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 			ps.setInt(2, menuCode);
 			ps.setString(3, vmNo);
 			
-			good = goodsDAO.vmGoodselect(con, menuCode, vmNo);
+			good = goodsDAO.Goodselect(con, menuCode, vmNo);
 			if(good.getStock() < qty) {
 				throw new SQLException("남은 재고가 없습니다.");
 			}

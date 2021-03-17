@@ -1,18 +1,14 @@
 package mvc.model.dao;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 import java.util.List;
 
 import mvc.model.dto.Goods;
 import mvc.model.dto.Menu;
-import mvc.model.dto.VMGoods;
 
 public interface GoodsDAO {
-	/** 
-	 * 지점 별 메뉴보여주기
-	 * */
-	List<VMGoods> goodsSelect(String vmNo) throws SQLException;
 	
 	
 	/** 
@@ -42,7 +38,7 @@ public interface GoodsDAO {
 	/**
 	 * 자판기별 해당상품 재고 보기
 	 * */
-	VMGoods vmGoodselect(Connection con,int menuCode, String vmNo) throws SQLException;
+	Goods Goodselect(Connection con,int menuCode, String vmNo) throws SQLException;
 	
 	
 }
