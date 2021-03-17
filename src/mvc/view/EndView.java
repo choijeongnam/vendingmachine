@@ -42,11 +42,7 @@ public class EndView {
 		System.out.println("자판기별 매출 확인하기");
 		System.out.println("자판기번호 "+"|   총 판매액   |"+"  총 판매개수");
 		for(Orders orders : list) {
-			/*
-			System.out.print("    "+orders.getVmNo() + "    |      ");
-			System.out.print(orders.getTotalPrice() + "    |   ");
-			System.out.println("    "+orders.getQty());
-			*/
+			
 			System.out.print("    "+orders.getVmNo() + "\t\t ");
 			System.out.print(orders.getTotalPrice() + "\t");
 			System.out.println("\t  "+orders.getQty());
@@ -76,11 +72,7 @@ public class EndView {
 		System.out.println("일별 매출 확인하기");
 		System.out.println("     날짜     "+"|   총 판매액   |"+" 총 판매개수");
 		for(Orders orders : list) {
-			/*
-			System.out.print("  "+orders.getSaleDate()+"  |    ");
-			System.out.print(orders.getTotalPrice()+"      |    ");
-			System.out.println(orders.getQty());
-			*/
+			
 			System.out.print("  "+orders.getSaleDate()+"\t    ");
 			System.out.print(orders.getTotalPrice()+"\t      ");
 			System.out.println(orders.getQty());
@@ -116,9 +108,9 @@ public class EndView {
 	 * */
 	public static void printMenuSalesList(List<Menu> menuList) {
 		System.out.println("제품별 매출 확인하기");
-		System.out.println("   메뉴이름  |   판매액   | 판매개수");
+		System.out.println("  메뉴이름  |   판매액   | 판매개수");
 		for(Menu menu : menuList) {
-			System.out.println(" "+menu.getMenuName() +"  |   " + menu.getOrders().getTotalPrice() + "\t  |   " + menu.getOrders().getQty());
+			System.out.println(" "+menu.getMenuName() +"      " + menu.getOrders().getTotalPrice() + "\t      " + menu.getOrders().getQty());
 		}
 		
 	}
